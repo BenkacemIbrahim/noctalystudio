@@ -7,14 +7,16 @@ export default function Testimonial() {
   return (
     <section
       className={cn(
-        "paper-texture relative w-full overflow-hidden text-dark",
+        "paper-texture relative w-full overflow-hidden text-midnight",
         "py-28 md:py-40"
       )}
     >
+      <div aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 h-72 w-[90%] rounded-full bg-gradient-to-r from-coral/10 via-amber/8 to-teal/10 blur-[80px]" />
+
       <div className="mx-auto w-full max-w-[1500px] px-6 lg:px-10">
         <div className="mb-16 flex items-center gap-3 md:mb-24">
-          <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-          <span className="text-[0.72rem] font-semibold uppercase tracking-widest2 text-dark/70">
+          <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-coral to-amber shadow-glow-amber" />
+          <span className="text-[0.72rem] font-semibold uppercase tracking-widest2 text-midnight/70">
             Témoignage client
           </span>
         </div>
@@ -29,7 +31,7 @@ export default function Testimonial() {
               className="relative"
             >
               <svg
-                className="absolute -left-6 -top-10 h-20 w-20 text-accent/25 md:-left-10 md:-top-14 md:h-28 md:w-28"
+                className="absolute -left-6 -top-10 h-20 w-20 text-coral/30 md:-left-10 md:-top-14 md:h-28 md:w-28"
                 viewBox="0 0 100 100"
                 fill="currentColor"
               >
@@ -38,12 +40,12 @@ export default function Testimonial() {
 
               <p className="font-display text-[clamp(1.8rem,4.4vw,4.6rem)] font-light italic leading-[1.18] tracking-[-0.015em] text-balance">
                 <span className="not-italic">&laquo;&nbsp;</span>
-                Badr fait preuve d&apos;une{" "}
-                <span className="not-italic font-semibold text-accent-deep">
+                Badr fait preuve d&rsquo;une{" "}
+                <span className="not-italic font-semibold text-gradient-coral">
                   bonne direction artistique
                 </span>{" "}
                 [...] il a démontré sa capacité à apporter une{" "}
-                <span className="not-italic font-semibold text-accent-deep">
+                <span className="not-italic font-semibold text-gradient-ocean">
                   vision artistique pertinente et innovante
                 </span>
                 .<span className="not-italic">&nbsp;»</span>
@@ -58,14 +60,16 @@ export default function Testimonial() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className={cn(
-                "group relative overflow-hidden rounded-[1.75rem] border border-dark/10 bg-cream-50",
-                "shadow-[0_30px_80px_-30px_rgba(10,15,28,0.25)]",
-                "before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-dark/[0.04]"
+                "group relative overflow-hidden rounded-[1.75rem] border border-midnight/10 bg-gradient-to-br from-ivory-50 to-ivory-100",
+                "shadow-[0_30px_80px_-30px_rgba(255,107,107,0.25)]",
+                "before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:via-transparent before:to-midnight/[0.04]"
               )}
             >
+              <div aria-hidden className="absolute -top-20 -right-20 h-52 w-52 rounded-full bg-gradient-to-br from-coral/20 to-amber/20 blur-3xl opacity-60" />
+
               <div className="absolute right-6 top-6 z-10">
-                <div className="h-10 w-10 rounded-full border border-dark/10 bg-accent/15 flex items-center justify-center">
-                  <svg className="h-4 w-4 text-accent-deep" viewBox="0 0 24 24" fill="none">
+                <div className="h-10 w-10 rounded-full border border-midnight/10 bg-gradient-to-br from-coral/25 to-amber/25 flex items-center justify-center backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12">
+                  <svg className="h-4 w-4 text-coral-500" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"
                       stroke="currentColor"
@@ -79,21 +83,21 @@ export default function Testimonial() {
               <div className="relative flex flex-col gap-8 px-8 pt-12 pb-8 md:px-10 md:pt-14 md:pb-10">
                 <div className="flex items-center gap-2">
                   <svg
-                    className="h-3 w-3 text-accent-deep"
+                    className="h-3 w-3 text-coral-500"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
                     <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                   </svg>
-                  <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-widest2 text-dark/70">
+                  <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-widest2 text-midnight/70">
                     Lettre de recommandation
                   </span>
                 </div>
 
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center gap-5">
-                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-dark/10 bg-gradient-to-br from-accent-soft via-accent/40 to-accent-deep/60">
-                      <div className="absolute inset-0 flex items-center justify-center font-display text-[1.6rem] font-black text-dark/80">
+                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-midnight/10 bg-gradient-to-br from-coral-200 via-amber-soft to-teal-soft">
+                      <div className="absolute inset-0 flex items-center justify-center font-display text-[1.6rem] font-black text-midnight/80">
                         JR
                       </div>
                     </div>
@@ -102,7 +106,7 @@ export default function Testimonial() {
                       <p className="font-display text-[1.45rem] font-semibold leading-none tracking-tight">
                         Jérémie Renault
                       </p>
-                      <p className="font-mono text-[0.72rem] font-semibold uppercase tracking-widest2 text-dark/60">
+                      <p className="font-mono text-[0.72rem] font-semibold uppercase tracking-widest2 text-midnight/60">
                         Chief Marketing Officer · Notify
                       </p>
                     </div>
@@ -112,11 +116,14 @@ export default function Testimonial() {
 
                   <a
                     href="#"
-                    className="group/link inline-flex items-center gap-2.5 pt-1 text-[0.82rem] font-semibold uppercase tracking-widest2 text-dark transition-colors hover:text-accent-deep"
+                    className="group/link inline-flex items-center gap-2.5 pt-1 text-[0.82rem] font-semibold uppercase tracking-widest2 text-midnight transition-all duration-500"
                   >
-                    <span>Lire la lettre complète</span>
+                    <span className="relative">
+                      Lire la lettre complète
+                      <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-coral to-amber transition-all duration-500 group-hover/link:w-full" />
+                    </span>
                     <svg
-                      className="h-3.5 w-3.5 transition-all duration-500 group-hover/link:translate-x-1.5 group-hover/link:rotate-[-45deg]"
+                      className="h-3.5 w-3.5 transition-all duration-500 group-hover/link:translate-x-1.5 group-hover/link:rotate-[-45deg] text-coral-500"
                       viewBox="0 0 24 24"
                       fill="none"
                     >
@@ -130,8 +137,6 @@ export default function Testimonial() {
                     </svg>
                   </a>
                 </div>
-
-                <div className="pointer-events-none absolute -bottom-20 -right-20 h-60 w-60 rounded-full bg-accent/10 blur-3xl" />
               </div>
             </motion.div>
           </div>

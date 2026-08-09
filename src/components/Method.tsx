@@ -109,9 +109,10 @@ export default function Method() {
       id="methode"
       ref={ref}
       data-nav-theme="dark"
-      className="grain relative isolate min-h-screen overflow-hidden bg-dark px-6 py-32 lg:px-12"
+      className="grain relative isolate min-h-screen overflow-hidden bg-midnight px-6 py-32 lg:px-12"
     >
-      {/* Radar background */}
+      <div aria-hidden className="absolute inset-0 mesh-gradient opacity-30 animate-aurora" />
+
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.18]"
@@ -119,8 +120,9 @@ export default function Method() {
         <svg className="h-full w-full" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
           <defs>
             <radialGradient id="radarFade" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#5BB5E8" stopOpacity="1" />
-              <stop offset="100%" stopColor="#5BB5E8" stopOpacity="0" />
+              <stop offset="0%" stopColor="#FF6B6B" stopOpacity="1" />
+              <stop offset="50%" stopColor="#FFB547" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#4ECDC4" stopOpacity="0" />
             </radialGradient>
           </defs>
           <g stroke="url(#radarFade)" fill="none">
@@ -140,7 +142,6 @@ export default function Method() {
                 />
               );
             })}
-            {/* major axes labels */}
             {[0, 90, 180, 270].map((d) => {
               const a = (d * Math.PI) / 180;
               return (
@@ -158,28 +159,26 @@ export default function Method() {
         </svg>
       </div>
 
-      {/* Soft center glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[60rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20"
-        style={{ background: "radial-gradient(closest-side, rgba(91,181,232,0.6), transparent)" }}
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[60rem] w-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25"
+        style={{ background: "radial-gradient(closest-side, rgba(255,107,107,0.6), rgba(255,181,71,0.2), transparent)" }}
       />
 
       <div className="relative mx-auto max-w-[1500px]">
-        <div className="method-label mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-accent-soft">
-          <span className="h-px w-10 bg-accent-soft/50" />
+        <div className="method-label mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-amber-soft">
+          <span className="h-px w-10 bg-gradient-to-r from-coral/50 via-amber/50 to-transparent" />
           — ma méthode
         </div>
 
-        <h2 className="method-title max-w-4xl font-display text-[clamp(2.4rem,6vw,5.4rem)] font-black leading-[0.95] text-cream">
-          Du brief au lancement
+        <h2 className="method-title max-w-4xl font-display text-[clamp(2.4rem,6vw,5.4rem)] font-black leading-[0.95] text-ivory">
+          Du brief <span className="text-gradient-coral italic font-light">au</span> lancement
         </h2>
-        <p className="method-sub mt-5 max-w-2xl text-lg leading-relaxed text-cream/70">
+        <p className="method-sub mt-5 max-w-2xl text-lg leading-relaxed text-ivory/70">
           De la première question au jour où le site tourne sans moi.
         </p>
 
         <div className="mt-20 grid grid-cols-12 items-start gap-8">
-          {/* STEPS LEFT */}
           <div className="col-span-12 lg:col-span-4">
             <ol className="space-y-4">
               {STEPS.map((s, i) => (
@@ -190,8 +189,8 @@ export default function Method() {
                     className={cn(
                       "group relative w-full overflow-hidden rounded-2xl border p-5 text-left transition-all duration-500",
                       active === i
-                        ? "border-accent/50 bg-accent/[0.08] shadow-[0_20px_60px_-20px_rgba(91,181,232,0.4)]"
-                        : "border-cream/10 bg-cream/[0.03] hover:border-cream/25 hover:bg-cream/[0.05]"
+                        ? "border-coral/50 bg-gradient-to-r from-coral/[0.10] via-amber/[0.06] to-transparent shadow-[0_20px_60px_-20px_rgba(255,107,107,0.45)]"
+                        : "border-ivory/10 bg-ivory/[0.03] hover:border-ivory/25 hover:bg-ivory/[0.05]"
                     )}
                   >
                     <div className="flex items-center justify-between">
@@ -200,17 +199,17 @@ export default function Method() {
                           className={cn(
                             "grid h-10 w-10 place-items-center rounded-full font-mono text-xs transition-all",
                             active === i
-                              ? "bg-accent text-dark"
-                              : "bg-cream/[0.06] text-cream/70"
+                              ? "bg-gradient-to-br from-coral to-amber text-midnight shadow-glow-coral"
+                              : "bg-ivory/[0.06] text-ivory/70"
                           )}
                         >
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <div>
-                          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent-soft">
+                          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-gradient-coral">
                             {s.tag}
                           </div>
-                          <div className="font-display text-xl font-semibold text-cream">
+                          <div className="font-display text-xl font-semibold text-ivory">
                             {s.title}
                           </div>
                         </div>
@@ -218,18 +217,24 @@ export default function Method() {
                       <svg
                         className={cn(
                           "h-5 w-5 shrink-0 transition-all duration-500",
-                          active === i ? "text-accent rotate-0 opacity-100" : "-rotate-90 text-cream/30 opacity-50"
+                          active === i ? "text-coral rotate-0 opacity-100" : "-rotate-90 text-ivory/30 opacity-50"
                         )}
                         viewBox="0 0 24 24"
                         fill="none"
                       >
                         <path
                           d="M6 9l6 6 6-6"
-                          stroke="currentColor"
+                          stroke="url(#chevronGrad)"
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         />
+                        <defs>
+                          <linearGradient id="chevronGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#FF6B6B" />
+                            <stop offset="100%" stopColor="#FFB547" />
+                          </linearGradient>
+                        </defs>
                       </svg>
                     </div>
                     <AnimatePresence initial={false}>
@@ -241,7 +246,7 @@ export default function Method() {
                           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                           className="overflow-hidden pl-14"
                         >
-                          <p className="pt-4 text-sm leading-relaxed text-cream/70">
+                          <p className="pt-4 text-sm leading-relaxed text-ivory/70">
                             {s.text}
                           </p>
                         </motion.div>
@@ -253,45 +258,41 @@ export default function Method() {
             </ol>
           </div>
 
-          {/* CENTER ORBIT */}
           <div className="col-span-12 lg:col-span-5">
             <div className="method-orbit relative mx-auto aspect-square w-full max-w-[560px]">
-              {/* Central planet */}
               <motion.div
                 animate={{
                   boxShadow: [
-                    "0 0 80px 10px rgba(91,181,232,0.25)",
-                    "0 0 140px 24px rgba(91,181,232,0.45)",
-                    "0 0 80px 10px rgba(91,181,232,0.25)",
+                    "0 0 80px 10px rgba(255,107,107,0.30)",
+                    "0 0 140px 24px rgba(255,181,71,0.50)",
+                    "0 0 80px 10px rgba(78,205,196,0.30)",
                   ],
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_30%_30%,#A9DDF5,#3A8AB5_55%,#0A2A42_100%)]"
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_30%_30%,#FFD79C,#FF6B6B_45%,#7B4B94_100%)]"
               >
                 <div className="absolute inset-0 rounded-full opacity-60 mix-blend-soft-light"
                   style={{
                     backgroundImage:
-                      "radial-gradient(circle at 65% 55%, rgba(255,255,255,0.45), transparent 35%), radial-gradient(circle at 20% 80%, rgba(91,181,232,0.4), transparent 30%)",
+                      "radial-gradient(circle at 65% 55%, rgba(255,255,255,0.55), transparent 35%), radial-gradient(circle at 20% 80%, rgba(78,205,196,0.45), transparent 30%)",
                   }}
                 />
               </motion.div>
 
-              {/* Orbit rings */}
               {[110, 160, 210, 250].map((r, i) => (
                 <div
                   key={r}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/15"
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-gradient-to-r border-coral/25 via-amber/20 to-teal/15"
                   style={{ width: r * 2, height: r * 2, animation: `spin-${i} ${22 + i * 4}s linear infinite` }}
                 />
               ))}
 
-              {/* Orbiting planets */}
               {STEPS.slice(0, 5).map((s, i) => {
                 const radii = [110, 155, 200, 235, 260];
                 const r = radii[i] ?? 260;
                 const dur = 18 + i * 6;
                 const size = [22, 26, 30, 24, 28][i];
-                const colors = ["#BCD4E6", "#6CC0EA", "#A9DDF5", "#3A8AB5", "#90CDE8"];
+                const colors = ["#FF6B6B", "#FFB547", "#4ECDC4", "#7B4B94", "#FFD79C"];
                 const isActive = active === i;
                 return (
                   <div
@@ -318,19 +319,18 @@ export default function Method() {
                         transition={{ duration: 1.4, repeat: isActive ? Infinity : 0 }}
                         className={cn(
                           "grid h-full w-full place-items-center rounded-full transition-all duration-500",
-                          "shadow-[0_0_20px_rgba(91,181,232,0.45)]",
-                          isActive ? "ring-2 ring-accent/70" : ""
+                          "shadow-[0_0_20px_rgba(255,107,107,0.50)]",
+                          isActive ? "ring-2 ring-coral/80" : ""
                         )}
                         style={{ backgroundColor: colors[i] }}
                       >
-                        <span className="font-mono text-[10px] font-bold text-dark">
+                        <span className="font-mono text-[10px] font-bold text-midnight">
                           {i + 1}
                         </span>
                       </motion.span>
-                      {/* pulsing aura */}
                       {isActive && (
                         <motion.span
-                          className="absolute inset-0 -z-10 rounded-full bg-accent/40"
+                          className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-coral/50 to-amber/50"
                           initial={{ scale: 1, opacity: 0.6 }}
                           animate={{ scale: 3, opacity: 0 }}
                           transition={{ duration: 1.6, repeat: Infinity, ease: "easeOut" }}
@@ -341,7 +341,6 @@ export default function Method() {
                 );
               })}
 
-              {/* shooting star trails */}
               {[0, 1, 2, 3, 4].map((i) => (
                 <motion.div
                   key={`ss-${i}`}
@@ -350,7 +349,7 @@ export default function Method() {
                     top: `${18 + i * 14}%`,
                     left: `${10 + i * 10}%`,
                     background:
-                      "linear-gradient(to right, transparent, rgba(91,181,232,0.6) 40%, rgba(255,255,255,0.9))",
+                      "linear-gradient(to right, transparent, rgba(255,107,107,0.7) 40%, rgba(255,181,71,0.95))",
                     rotate: 22 + i * 8,
                   }}
                   initial={{ x: -120, opacity: 0 }}
@@ -362,20 +361,22 @@ export default function Method() {
                     ease: "linear",
                   }}
                 >
-                  <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-cream shadow-[0_0_14px_rgba(91,181,232,0.8)]" />
+                  <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-ivory shadow-[0_0_14px_rgba(255,181,71,0.9)]" />
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-6 flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-cream/60">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_#5BB5E8]" />
+            <div className="mt-6 flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/60">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-coral opacity-70" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-r from-coral to-amber shadow-glow-coral" />
+              </span>
               Cliquez une sphère
             </div>
           </div>
 
-          {/* RIGHT PROGRESS */}
           <div className="col-span-12 lg:col-span-3 lg:flex lg:flex-col lg:items-end">
-            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-cream/50">
+            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-gradient-coral">
               {String(active + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
             </div>
             <ul className="mt-6 space-y-3 lg:w-auto lg:min-w-[180px]">
@@ -390,24 +391,24 @@ export default function Method() {
                       <span
                         className={cn(
                           "h-[2px] w-10 transition-all",
-                          active >= i ? "bg-accent" : "bg-cream/15"
+                          active >= i ? "bg-gradient-to-r from-coral to-amber" : "bg-ivory/15"
                         )}
                       />
                       <span
                         className={cn(
                           "absolute left-0 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full border transition-all duration-500",
                           active === i
-                            ? "scale-125 border-accent bg-accent shadow-[0_0_12px_#5BB5E8]"
+                            ? "scale-125 border-transparent bg-gradient-to-r from-coral to-amber shadow-glow-coral"
                             : active > i
-                              ? "border-accent/60 bg-accent/40"
-                              : "border-cream/30 bg-transparent"
+                              ? "border-amber/60 bg-coral/40"
+                              : "border-ivory/30 bg-transparent"
                         )}
                       />
                     </div>
                     <span
                       className={cn(
                         "font-mono text-[10px] uppercase tracking-[0.22em] transition-colors",
-                        active === i ? "text-cream" : "text-cream/45"
+                        active === i ? "text-ivory" : "text-ivory/45"
                       )}
                     >
                       {s.label}

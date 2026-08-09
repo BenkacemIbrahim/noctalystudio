@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
-import LoadingScreen from "@/components/LoadingScreen";
 import LogoIntro from "@/components/LogoIntro";
 import SoundToggle from "@/components/SoundToggle";
 import Hero from "@/components/Hero";
@@ -14,15 +13,13 @@ import Skills from "@/components/Skills";
 import Method from "@/components/Method";
 import ContactFooter from "@/components/ContactFooter";
 
-type Phase = "loading" | "logo" | "ready";
+type Phase = "logo" | "ready";
 
 export default function HomePage() {
-  const [phase, setPhase] = useState<Phase>("loading");
+  const [phase, setPhase] = useState<Phase>("logo");
 
   useEffect(() => {
-    if (phase === "loading") {
-      document.body.style.overflow = "hidden";
-    } else if (phase === "logo") {
+    if (phase === "logo") {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -33,10 +30,7 @@ export default function HomePage() {
   }, [phase]);
 
   return (
-    <main className="relative min-h-screen bg-dark text-cream">
-      {phase === "loading" && (
-        <LoadingScreen onComplete={() => setPhase("logo")} />
-      )}
+    <main className="relative min-h-screen bg-midnight text-ivory">
       {phase === "logo" && (
         <LogoIntro onComplete={() => setPhase("ready")} />
       )}

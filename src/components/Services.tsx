@@ -14,10 +14,11 @@ type Room = {
   title: string;
   shortLabel: string;
   description: string;
-  bg: string;
+  bgClass: string;
   textClass: string;
   subTextClass: string;
   watermarkClass: string;
+  accent: string;
   medium: string[];
   livraison: string[];
 };
@@ -30,19 +31,20 @@ const ROOMS: Room[] = [
     title: "SITE VITRINE PREMIUM",
     shortLabel: "VITRINE",
     description:
-      "Une porte d'entrÃ©e soignÃ©e, Ã  l'image de votre maison. Design cinÃ©matique, micro-interactions et typographie d'exception pour convertir vos visiteurs en ambassadeurs.",
-    bg: "bg-[#E0EDF5]",
-    textClass: "text-dark",
-    subTextClass: "text-dark/65",
-    watermarkClass: "text-dark/10",
+      "Une porte d'entrée soignée, à l'image de votre maison. Design cinématique, micro-interactions et typographie d'exception pour convertir vos visiteurs en ambassadeurs.",
+    bgClass: "bg-gradient-to-br from-[#FFF5EC] via-[#FFE8D6] to-[#FED4B0]",
+    textClass: "text-midnight",
+    subTextClass: "text-midnight/65",
+    watermarkClass: "text-midnight/10",
+    accent: "text-coral",
     medium: [
-      "Direction artistique & identitÃ©",
-      "3 maquettes clÃ© en main",
+      "Direction artistique & identité",
+      "3 maquettes clé en main",
       "Pages service / projet / blog",
       "Optimisation SEO Core Web Vitals",
     ],
     livraison: [
-      "Livrable en 3 Ã  4 semaines",
+      "Livrable en 3 à 4 semaines",
       "3 rounds de retours inclus",
       "Formation de prise en main",
       "30 jours de support post-lancement",
@@ -55,16 +57,17 @@ const ROOMS: Room[] = [
     title: "APPLI WEB",
     shortLabel: "APPLI WEB",
     description:
-      "Des plateformes sur-mesure, conÃ§ues comme des ateliers. Dashboards, CRM, outils internes ou SaaS : architecture propre, composants rÃ©utilisables et performance tenace.",
-    bg: "paper-texture",
-    textClass: "text-dark",
-    subTextClass: "text-dark/65",
-    watermarkClass: "text-dark/08",
+      "Des plateformes sur-mesure, conçues comme des ateliers. Dashboards, CRM, outils internes ou SaaS : architecture propre, composants réutilisables et performance tenace.",
+    bgClass: "paper-texture",
+    textClass: "text-midnight",
+    subTextClass: "text-midnight/65",
+    watermarkClass: "text-midnight/08",
+    accent: "text-amber-deep",
     medium: [
       "Audit & atelier de cadrage",
       "Design system composable",
       "Next.js / React / Node",
-      "Base de donnÃ©es & API REST/GraphQL",
+      "Base de données & API REST/GraphQL",
     ],
     livraison: [
       "Sprints bi-hebdomadaires",
@@ -80,11 +83,12 @@ const ROOMS: Room[] = [
     title: "APPLICATION MOBILE",
     shortLabel: "MOBILE",
     description:
-      "Une expÃ©rience qui tient dans la poche. iOS & Android avec une seule base de code, animations fluides et sensation native, jusqu'aux stores.",
-    bg: "bg-[#EAE4D4]",
-    textClass: "text-dark",
-    subTextClass: "text-dark/65",
-    watermarkClass: "text-dark/09",
+      "Une expérience qui tient dans la poche. iOS & Android avec une seule base de code, animations fluides et sensation native, jusqu'aux stores.",
+    bgClass: "bg-gradient-to-br from-[#E8FAF8] via-[#D1F4F0] to-[#A3E6E1]",
+    textClass: "text-midnight",
+    subTextClass: "text-midnight/65",
+    watermarkClass: "text-midnight/09",
+    accent: "text-teal-deep",
     medium: [
       "Atelier UX & user flows",
       "Prototype interactif Figma",
@@ -95,7 +99,7 @@ const ROOMS: Room[] = [
       "Build iOS App Store",
       "Build Android Play Store",
       "Certificats & pipeline de release",
-      "Hotfix et itÃ©rations post-lancement",
+      "Hotfix et itérations post-lancement",
     ],
   },
   {
@@ -105,11 +109,12 @@ const ROOMS: Room[] = [
     title: "REFONTE EXISTANTE",
     shortLabel: "REFONTE",
     description:
-      "Redonner un second souffle sans jeter l'histoire. Nous reprenons l'existant, modernisons la pile, amÃ©liorons la performance et retravaillons l'expÃ©rience sans perdre vos donnÃ©es.",
-    bg: "bg-[#0F1A2E]",
-    textClass: "text-cream",
-    subTextClass: "text-cream/65",
-    watermarkClass: "text-cream/08",
+      "Redonner un second souffle sans jeter l'histoire. Nous reprenons l'existant, modernisons la pile, améliorons la performance et retravaillons l'expérience sans perdre vos données.",
+    bgClass: "bg-gradient-to-br from-[#1A1430] via-[#0D0B1F] to-[#080612]",
+    textClass: "text-ivory",
+    subTextClass: "text-ivory/65",
+    watermarkClass: "text-ivory/08",
+    accent: "text-plum-soft",
     medium: [
       "Audit complet de l'existant",
       "Migration technique progressive",
@@ -118,8 +123,8 @@ const ROOMS: Room[] = [
     ],
     livraison: [
       "Plan de migration sans downtime",
-      "Synchronisation de donnÃ©es",
-      "Tests de non-rÃ©gression",
+      "Synchronisation de données",
+      "Tests de non-régression",
       "Bascul en douceur par feature flags",
     ],
   },
@@ -130,22 +135,23 @@ const ROOMS: Room[] = [
     title: "MISE EN LIGNE & OPTIMISATION",
     shortLabel: "LANCEMENT",
     description:
-      "L'ultime coup de pinceau avant le vernissage. HÃ©bergement, nom de domaine, SEO fin, analytics et monitoring : votre oeuvre est prÃªte Ã  accueillir le monde.",
-    bg: "bg-[#F2EDE1]",
-    textClass: "text-dark",
-    subTextClass: "text-dark/65",
-    watermarkClass: "text-dark/09",
+      "L'ultime coup de pinceau avant le vernissage. Hébergement, nom de domaine, SEO fin, analytics et monitoring : votre œuvre est prête à accueillir le monde.",
+    bgClass: "bg-gradient-to-br from-[#FDE8E8] via-[#FFE0D0] to-[#FFD4B0]",
+    textClass: "text-midnight",
+    subTextClass: "text-midnight/65",
+    watermarkClass: "text-midnight/09",
+    accent: "text-coral-500",
     medium: [
-      "Configuration hÃ©bergement & domaine",
+      "Configuration hébergement & domaine",
       "SSL, CDN et cache global",
       "On-page SEO & schema.org",
       "Analytics, heatmaps et monitoring",
     ],
     livraison: [
-      "Mise en ligne supervisÃ©e",
+      "Mise en ligne supervisée",
       "Checklist de 120 points",
       "Rapport de performance",
-      "Support 15 jours aprÃ¨s lancement",
+      "Support 15 jours après lancement",
     ],
   },
 ];
@@ -233,7 +239,7 @@ export default function Services() {
       data-nav-theme="light"
       className={cn(
         "relative w-full overflow-hidden",
-        "bg-cream text-dark"
+        "bg-ivory text-midnight"
       )}
     >
       <div className="relative h-[100svh] w-full overflow-hidden md:h-screen">
@@ -249,9 +255,16 @@ export default function Services() {
               }}
               className={cn(
                 "relative h-full w-full flex-shrink-0 overflow-hidden",
-                room.bg
+                room.bgClass
               )}
             >
+              <div aria-hidden className={cn(
+                "pointer-events-none absolute inset-0 opacity-40",
+                room.id === "04" 
+                  ? "mesh-gradient" 
+                  : ""
+              )} />
+
               <span
                 className={cn(
                   "pointer-events-none absolute right-[-4vw] top-[-8vw] font-display font-black leading-none select-none",
@@ -294,7 +307,9 @@ export default function Services() {
                     )}
                     style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}
                   >
-                    {room.title}
+                    <span className={room.id === "04" ? "text-gradient-coral" : ""}>
+                      {room.title}
+                    </span>
                   </h2>
 
                   <div className="grid w-full grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
@@ -315,7 +330,7 @@ export default function Services() {
                             room.subTextClass
                           )}
                         >
-                          MÃ©dium
+                          Médium
                         </span>
                         <ul className="flex flex-col gap-3">
                           {room.medium.map((item, k) => (
@@ -328,10 +343,7 @@ export default function Services() {
                             >
                               <span
                                 className={cn(
-                                  "mt-2 h-px w-6 flex-shrink-0",
-                                  room.id === "04"
-                                    ? "bg-accent/80"
-                                    : "bg-accent-deep/80"
+                                  "mt-2 h-px w-6 flex-shrink-0 bg-gradient-to-r from-coral to-amber"
                                 )}
                               />
                               <span className="leading-snug">{item}</span>
@@ -360,10 +372,7 @@ export default function Services() {
                             >
                               <span
                                 className={cn(
-                                  "mt-2 h-px w-6 flex-shrink-0",
-                                  room.id === "04"
-                                    ? "bg-accent/80"
-                                    : "bg-accent-deep/80"
+                                  "mt-2 h-px w-6 flex-shrink-0 bg-gradient-to-r from-teal to-plum-soft"
                                 )}
                               />
                               <span className="leading-snug">{item}</span>
@@ -383,18 +392,18 @@ export default function Services() {
                     )}
                     style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.5rem)" }}
                   >
-                    NoctalyStudio Â· PiÃ¨ce {room.index}
+                    NoctalyStudio · Pièce {room.index}
                   </span>
                   <div className="hidden items-center gap-2 md:flex">
                     <button
                       onClick={prev}
-                      aria-label="Salle prÃ©cÃ©dente"
+                      aria-label="Salle précédente"
                       disabled={activeIndex === 0}
                       className={cn(
                         "group flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 disabled:opacity-30",
                         room.id === "04"
-                          ? "border-cream/30 text-cream hover:bg-cream hover:text-dark"
-                          : "border-dark/20 text-dark hover:bg-dark hover:text-cream"
+                          ? "border-ivory/30 text-ivory hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight"
+                          : "border-midnight/20 text-midnight hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent"
                       )}
                     >
                       <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
@@ -414,8 +423,8 @@ export default function Services() {
                       className={cn(
                         "group flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 disabled:opacity-30",
                         room.id === "04"
-                          ? "border-cream/30 text-cream hover:bg-cream hover:text-dark"
-                          : "border-dark/20 text-dark hover:bg-dark hover:text-cream"
+                          ? "border-ivory/30 text-ivory hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight"
+                          : "border-midnight/20 text-midnight hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent"
                       )}
                     >
                       <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
@@ -446,9 +455,9 @@ export default function Services() {
           <div className="pointer-events-auto mx-auto flex w-full max-w-[1500px] items-center justify-between gap-4">
             <button
               onClick={prev}
-              aria-label="Salle prÃ©cÃ©dente"
+              aria-label="Salle précédente"
               disabled={activeIndex === 0}
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-dark/20 bg-cream/80 backdrop-blur text-dark transition-all duration-500 hover:bg-dark hover:text-cream disabled:opacity-30 md:hidden"
+              className="group flex h-11 w-11 items-center justify-center rounded-full border border-midnight/20 bg-ivory/80 backdrop-blur text-midnight transition-all duration-500 hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent disabled:opacity-30 md:hidden"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
                 <path
@@ -461,7 +470,7 @@ export default function Services() {
               </svg>
             </button>
 
-            <div className="flex flex-1 items-center justify-center gap-3 overflow-x-auto md:gap-5">
+            <div className="flex flex-1 items-center justify-center gap-3 overflow-x-auto scrollbar-hide md:gap-5">
               {STEP_LABELS.map((label, i) => {
                 const isActive = i === activeIndex;
                 return (
@@ -476,7 +485,7 @@ export default function Services() {
                     <span
                       className={cn(
                         "font-mono text-[0.7rem] font-bold transition-colors",
-                        isActive ? "text-accent-deep" : "text-dark/50"
+                        isActive ? "text-coral-500" : "text-midnight/50"
                       )}
                     >
                       {String(i + 1).padStart(2, "0")}
@@ -485,24 +494,24 @@ export default function Services() {
                       className={cn(
                         "relative flex h-2.5 w-2.5 items-center justify-center rounded-full border transition-all duration-500",
                         isActive
-                          ? "border-accent-deep bg-accent-deep scale-110"
-                          : "border-dark/35 bg-transparent group-hover:border-dark/60"
+                          ? "border-transparent bg-gradient-to-r from-coral to-amber scale-110 shadow-glow-coral"
+                          : "border-midnight/35 bg-transparent group-hover:border-midnight/60"
                       )}
                     >
                       {isActive && (
-                        <span className="absolute inset-0 -m-1.5 animate-ping rounded-full bg-accent-deep/30" />
+                        <span className="absolute inset-0 -m-1.5 animate-ping rounded-full bg-coral/30" />
                       )}
                     </span>
                     <span
                       className={cn(
                         "hidden text-[0.72rem] font-semibold uppercase tracking-widest2 transition-colors sm:inline-block",
-                        isActive ? "text-dark" : "text-dark/50"
+                        isActive ? "text-midnight" : "text-midnight/50"
                       )}
                     >
                       {label}
                     </span>
                     {i < STEP_LABELS.length - 1 && (
-                      <span className="ml-0.5 hidden h-px w-8 bg-dark/15 md:inline-block" />
+                      <span className="ml-0.5 hidden h-px w-8 bg-midnight/15 md:inline-block" />
                     )}
                   </button>
                 );
@@ -513,7 +522,7 @@ export default function Services() {
               onClick={next}
               aria-label="Salle suivante"
               disabled={activeIndex === ROOMS.length - 1}
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-dark/20 bg-cream/80 backdrop-blur text-dark transition-all duration-500 hover:bg-dark hover:text-cream disabled:opacity-30 md:hidden"
+              className="group flex h-11 w-11 items-center justify-center rounded-full border border-midnight/20 bg-ivory/80 backdrop-blur text-midnight transition-all duration-500 hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent disabled:opacity-30 md:hidden"
             >
               <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
                 <path

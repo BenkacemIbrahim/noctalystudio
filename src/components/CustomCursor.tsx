@@ -77,8 +77,8 @@ export default function CustomCursor() {
           "pointer-events-none fixed left-0 top-0 z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full border transition-[width,height,border-color,background-color,opacity] duration-200 ease-out",
           isVisible ? "opacity-100" : "opacity-60",
           isHovering
-            ? "h-12 w-12 border-accent/70 bg-accent/10"
-            : "h-7 w-7 border-cream/60"
+            ? "h-12 w-12 border-coral/70 bg-coral/10"
+            : "h-7 w-7 border-ivory/60"
         )}
       />
       <motion.div
@@ -97,12 +97,18 @@ export default function CustomCursor() {
           fill="none"
           className={cn(
             "-translate-x-1/2 -translate-y-1/2 transition-colors",
-            isHovering ? "text-accent" : "text-cream"
+            isHovering ? "text-coral" : "text-gradient-coral"
           )}
         >
+          <defs>
+            <linearGradient id="cursorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF6B6B" />
+              <stop offset="100%" stopColor="#FFB547" />
+            </linearGradient>
+          </defs>
           <path
             d="M12 2 L13.7 8.3 L20 10 L13.7 11.7 L12 18 L10.3 11.7 L4 10 L10.3 8.3 Z"
-            fill="currentColor"
+            fill={isHovering ? "#FF6B6B" : "url(#cursorGrad)"}
           />
         </svg>
       </motion.div>

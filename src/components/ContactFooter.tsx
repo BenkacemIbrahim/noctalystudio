@@ -1,284 +1,443 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+type NavKey = "accueil" | "signature" | "services" | "projets" | "competences" | "methode" | "contact";
+interface Section { id: NavKey; label: string }
+const NAV: Section[] = [
+  { id: "accueil", label: "Accueil" },
+  { id: "signature", label: "Signature" },
+  { id: "services", label: "Services" },
+  { id: "projets", label: "Projets" },
+  { id: "competences", label: "Compétences" },
+  { id: "methode", label: "Méthode" },
+  { id: "contact", label: "Contact" },
+];
+
+const SOCIAL = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/badrkhazzani/" },
+  { label: "Github", href: "https://github.com/badrek" },
+  { label: "Dribbble", href: "#" },
+  { label: "X / Twitter", href: "#" },
+];
+
+function CornerBracketSVG() {
+  return (
+    <svg
+      viewBox="0 0 612 354"
+      className="pointer-events-none absolute inset-0 h-full w-full text-ivory/80"
+      aria-hidden
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <linearGradient id="cb1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#FF6B6B" />
+          <stop offset="1" stopColor="#FFB547" />
+        </linearGradient>
+        <linearGradient id="cb2" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFB547" />
+          <stop offset="1" stopColor="#4ECDC4" />
+        </linearGradient>
+        <linearGradient id="cb3" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stopColor="#4ECDC4" />
+          <stop offset="1" stopColor="#7B4B94" />
+        </linearGradient>
+        <linearGradient id="cb4" x1="1" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#7B4B94" />
+          <stop offset="1" stopColor="#FF6B6B" />
+        </linearGradient>
+      </defs>
+      <motion.path
+        initial={{ pathLength: 0, pathOffset: 1 }}
+        whileInView={{ pathLength: 1, pathOffset: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        d="M28,4 L2,4 L2,26 L28,26"
+        stroke="url(#cb1)"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <motion.path
+        initial={{ pathLength: 0, pathOffset: 1 }}
+        whileInView={{ pathLength: 1, pathOffset: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 1.4, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+        d="M584,4 L610,4 L610,26 L584,26"
+        stroke="url(#cb2)"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <motion.path
+        initial={{ pathLength: 0, pathOffset: 1 }}
+        whileInView={{ pathLength: 1, pathOffset: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        d="M28,352 L2,352 L2,330 L28,330"
+        stroke="url(#cb3)"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <motion.path
+        initial={{ pathLength: 0, pathOffset: 1 }}
+        whileInView={{ pathLength: 1, pathOffset: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 1.4, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        d="M584,352 L610,352 L610,330 L584,330"
+        stroke="url(#cb4)"
+        strokeWidth={4}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <motion.circle
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        cx="306"
+        cy="22"
+        r="6"
+        fill="url(#cb1)"
+      />
+      <motion.circle
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        cx="306"
+        cy="332"
+        r="6"
+        fill="url(#cb4)"
+      />
+    </svg>
+  );
+}
+
+function NavFooter() {
+  return (
+    <div className="space-y-3">
+      <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Navigation</p>
+      <ul className="space-y-2">
+        {NAV.map((n) => (
+          <li key={n.id}>
+            <a
+              href={`#${n.id}`}
+              className="group inline-flex items-center gap-2 text-sm text-ivory/65 transition-colors hover:text-ivory"
+            >
+              <span className="relative overflow-hidden">
+                {n.label}
+                <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-coral to-amber transition-transform duration-500 group-hover:scale-x-100" />
+              </span>
+              <svg
+                className="h-3 w-3 shrink-0 -translate-x-1 scale-75 text-ivory/40 transition-all duration-300 group-hover:translate-x-0 group-hover:scale-100 group-hover:text-coral"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ContactInfo() {
+  return (
+    <div className="space-y-4 text-sm">
+      <div>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Contact</p>
+        <a
+          href="mailto:hello@noctalystudio.com"
+          className="group relative inline-flex items-center gap-2 text-gradient-coral font-display text-lg tracking-tight"
+        >
+          hello@noctalystudio.com
+          <svg
+            className="h-4 w-4 translate-y-0.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M20 4H4C3.44772 4 3 4.44772 3 5V19C3 19.5523 3.44772 20 4 20H20C20.5523 20 21 19.5523 21 19V5C21 4.44772 20.5523 4 20 4Z"
+              stroke="currentColor"
+              strokeWidth="1.6"
+            />
+            <path d="M3 6L12 12L21 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+      </div>
+      <div>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Réseaux</p>
+        <ul className="space-y-2">
+          {SOCIAL.map((s) => (
+            <li key={s.label}>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative inline-flex items-center gap-2 text-ivory/65 hover:text-ivory"
+              >
+                <span className="relative overflow-hidden">
+                  {s.label}
+                  <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-coral to-amber transition-transform duration-500 group-hover:scale-x-100" />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Localisation</p>
+        <p className="text-ivory/65">
+          Paris &amp; remote — Toulouse.<br />
+          <span className="italic text-ivory/80">Et toute la France.</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function LogoMark({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 60 60" fill="none">
+      <rect x="4" y="4" width="52" height="52" rx="14" stroke="currentColor" strokeWidth="2.2" />
+      <path
+        d="M30 14L33.5 25.5L45.5 29L33.5 32.5L30 44L26.5 32.5L14.5 29L26.5 25.5L30 14Z"
+        fill="url(#starGradFooter)"
+      />
+      <defs>
+        <linearGradient id="starGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FF6B6B" />
+          <stop offset="50%" stopColor="#FFB547" />
+          <stop offset="100%" stopColor="#7B4B94" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+function Clock() {
+  const [time, setTime] = useState(new Date());
+  useEffect(() => {
+    const id = window.setInterval(() => setTime(new Date()), 1000 * 30);
+    return () => window.clearInterval(id);
+  }, []);
+  const paris = new Intl.DateTimeFormat("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Paris",
+  }).format(time);
+  return (
+    <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-ivory/55">
+      <span className="relative flex h-2 w-2">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal opacity-60" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-gradient-to-br from-teal to-mint shadow-glow-teal" />
+      </span>
+      {paris} &middot; Paris
+    </div>
+  );
+}
 
 export default function ContactFooter() {
+  const titleRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(titleRef, {
+    once: true,
+    margin: "-80px",
+  });
+
   return (
-    <section
+    <footer
       id="contact"
       data-nav-theme="dark"
-      className="grain relative isolate overflow-hidden bg-dark-900 px-6 pt-32 pb-16 lg:px-12"
+      className="grain relative isolate overflow-hidden bg-midnight pb-8 pt-24 text-ivory"
     >
+      <div aria-hidden className="pointer-events-none absolute inset-0 mesh-gradient opacity-30 animate-aurora" />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-60"
+        className="pointer-events-none absolute -top-24 left-1/2 h-96 w-[130%] -translate-x-1/2 opacity-35"
         style={{
-          background:
-            "radial-gradient(ellipse 80% 50% at 50% 10%, rgba(91,181,232,0.16), transparent 70%)",
+          backgroundImage:
+            "radial-gradient(ellipse at 50% 0%, rgba(255,107,107,0.22), rgba(255,181,71,0.12), transparent 70%)",
         }}
       />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-coral/40 to-transparent"
+      />
 
-      <div className="relative mx-auto max-w-[1500px]">
-        {/* CTA BLOCK */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto max-w-4xl text-center"
-        >
-          {/* Corner brackets */}
-          <svg
-            aria-hidden
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            className="absolute -left-2 -top-2 text-accent/70"
-          >
-            <motion.path
-              d="M 14 2 L 2 2 L 2 14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
-            />
-            <circle cx="2" cy="2" r="3" className="fill-accent" />
-          </svg>
-          <svg
-            aria-hidden
-            width="44"
-            height="44"
-            viewBox="0 0 44 44"
-            className="absolute -right-2 -bottom-2 text-accent/70"
-          >
-            <motion.path
-              d="M 30 42 L 42 42 L 42 30"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.25 }}
-            />
-            <circle cx="42" cy="42" r="3" className="fill-accent" />
-          </svg>
-
-          <h2 className="font-display text-[clamp(1.5rem,3.2vw,2.8rem)] font-semibold leading-[1.25] text-cream">
-            Un site, une interface ou une expérience à lancer ?
-            <br className="hidden sm:block" />
-            <span className="font-serif-italic font-light text-accent-soft">
-              Envoyez-moi le brief,
-            </span>{" "}
-            je vous réponds vite.
-          </h2>
+      <div className="relative mx-auto max-w-[1500px] px-6 lg:px-10">
+        <div ref={titleRef} className="mb-20">
+          <span className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-amber-soft">
+            <span className="h-px w-10 bg-gradient-to-r from-coral/50 via-amber/50 to-transparent" />
+            — finalisons ça ensemble
+          </span>
+          <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <h2 className="font-display text-[clamp(2.6rem,7vw,6.2rem)] font-black leading-[0.95] tracking-[-0.035em]">
+                <motion.span
+                  initial={{ y: "110%", opacity: 0 }}
+                  animate={inView ? { y: "0%", opacity: 1 } : {}}
+                  transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  Parlons de votre
+                </motion.span>
+                <br />
+                <motion.span
+                  initial={{ y: "110%", opacity: 0 }}
+                  animate={inView ? { y: "0%", opacity: 1 } : {}}
+                  transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  <span className="text-gradient-coral italic font-light">prochain</span> projet web
+                </motion.span>
+                <motion.span
+                  initial={{ y: "110%", opacity: 0 }}
+                  animate={inView ? { y: "0%", opacity: 1 } : {}}
+                  transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                  className="ml-3 inline-block"
+                >
+                  .
+                </motion.span>
+              </h2>
+            </div>
+            <p className="max-w-md text-lg leading-relaxed text-ivory/65 lg:col-span-4">
+              Un site, un redesign, un outil interne, une app mobile —<br />
+              <span className="italic text-ivory/90">je réponds à 48h</span> pour un premier échange, sans
+              attachement.
+            </p>
+          </div>
 
           <motion.a
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            href="mailto:badraitoufel5@gmail.com?subject=Projet%20NoctalyStudio"
-            className="group relative mx-auto mt-12 inline-flex items-center gap-4 overflow-hidden rounded-full bg-accent-pill px-14 py-6 text-xl font-semibold text-dark shadow-[0_20px_70px_-10px_rgba(91,181,232,0.55)] transition-all duration-500 hover:bg-cream hover:shadow-[0_20px_90px_-10px_rgba(242,237,225,0.4)]"
-          >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
-            />
-            <span className="relative z-10">Réserver un appel</span>
-            <svg
-              className="relative z-10 h-6 w-6 transition-transform duration-500 group-hover:translate-x-2"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M5 12H19M19 12L12 5M19 12L12 19"
-                stroke="currentColor"
-                strokeWidth="2.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </motion.a>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            href="#contact"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="mt-6"
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="group mt-16 flex items-center justify-center"
           >
-            <a
-              href="mailto:badraitoufel5@gmail.com"
-              className="group inline-flex flex-col items-center text-cream/70"
-            >
-              <span className="text-sm">
-                ou par email :{" "}
-                <span className="relative font-medium text-cream underline decoration-accent/50 decoration-2 underline-offset-4 transition-colors group-hover:text-accent-soft">
-                  badraitoufel5@gmail.com
-                </span>
-              </span>
-            </a>
-            <div className="mt-5 flex items-center justify-center gap-3">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_10px_rgba(91,181,232,0.9)]" />
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.35em] text-cream/60">
-                Réponse sous 24h, promis.
-              </span>
-            </div>
-          </motion.div>
-        </motion.div>
+            <div className="relative w-full max-w-[612px]">
+              <CornerBracketSVG />
+              <div className="relative flex flex-col gap-6 px-8 py-10 md:px-10 md:py-14">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">
+                      &mdash; cta studio
+                    </p>
+                    <p className="mt-2 font-display text-2xl leading-tight md:text-3xl">
+                      Réserver un <em className="text-gradient-coral not-italic italic">appel</em> 30&nbsp;min
+                    </p>
+                    <p className="mt-1 text-sm text-ivory/60">
+                      Découverte du projet, planning, devis sous 72h.
+                    </p>
+                  </div>
+                  <div className="relative mt-4 md:mt-0 md:shrink-0">
+                    <span className="pointer-events-none absolute -inset-6 -z-10 rounded-full bg-gradient-to-r from-coral/40 via-amber/30 to-teal/30 blur-2xl opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-coral via-amber to-plum shadow-[0_20px_60px_-12px_rgba(255,107,107,0.7)] transition-transform duration-500 group-hover:scale-105">
+                      <span className="sr-only">Réserver</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-9 w-9 text-midnight transition-transform duration-500 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
+                        fill="none"
+                      >
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-coral/20" />
+                  </div>
+                </div>
 
-        {/* FOOTER */}
-        <footer className="mt-32 border-t border-cream/10 pt-16">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0 }}
-              className="md:col-span-5"
-            >
-              <Link href="#top" className="group inline-flex items-center gap-3">
-                <svg width="42" height="42" viewBox="0 0 40 40" fill="none">
+                <div className="grid grid-cols-2 gap-3 pt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/45">
+                  <div className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-coral" />
+                    <span>Prochain créneau : 30 min</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-amber" />
+                    <span>Google Meet</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        </div>
+
+        <div className="relative grid grid-cols-12 gap-10 border-t border-ivory/10 pt-12 pb-10 md:gap-6">
+          <div className="col-span-12 md:col-span-4">
+            <div className="flex items-center gap-3">
+              <LogoMark className="h-10 w-10 text-gradient-coral" />
+              <div>
+                <p className="font-display text-xl font-black tracking-tight">NoctalyStudio</p>
+                <p className="text-[11px] uppercase tracking-[0.28em] text-ivory/50">
+                  <span className="text-gradient-sunset">Badr Khazzani</span> · Studio créatif
+                </p>
+              </div>
+            </div>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/60">
+              Des sites web et applications{" "}
+              <em className="not-italic italic text-gradient-coral">faits main</em>, sur-mesure, sans template, pour
+              qu&apos;ils durent. Basé à Paris.
+            </p>
+            <div className="mt-6">
+              <Clock />
+            </div>
+          </div>
+
+          <div className="col-span-6 md:col-span-4 lg:col-span-3 lg:pl-10">
+            <NavFooter />
+          </div>
+
+          <div className="col-span-6 md:col-span-4 lg:col-span-5">
+            <ContactInfo />
+          </div>
+        </div>
+
+        <div className="relative flex flex-col items-start justify-between gap-5 border-t border-ivory/10 pt-8 text-xs text-ivory/45 md:flex-row md:items-center">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p>&copy; {new Date().getFullYear()} NoctalyStudio. Tous droits réservés.</p>
+            <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
+            <p className="italic">
+              Design &amp; code par <span className="text-gradient-coral not-italic italic">Badr Khazzani</span> —
+              merci pour la visite{" "}
+              <span className="inline-flex items-center gap-1 align-middle text-gradient-coral">
+                <svg viewBox="0 0 24 24" className="inline h-3.5 w-3.5 translate-y-0.5" fill="none">
                   <path
-                    d="M 22 7 A 13 13 0 1 0 22 33 A 10 10 0 1 1 22 7 Z"
-                    stroke="#F2EDE1"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                  <path
-                    d="M 10 32 L 19 13 L 24 26 L 32 10"
-                    stroke="#F2EDE1"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
+                    d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10Z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
                     strokeLinejoin="round"
-                    fill="none"
                   />
-                  <path d="M32 10l-1 4 4 .5-3.5 2 1 4-3-2.2-3 2.2 1-4-3.5-2 4-.5z" fill="#5BB5E8" />
                 </svg>
-                <span className="font-display text-[1.75rem] font-black tracking-tight text-cream">
-                  NoctalyStudio
-                </span>
-              </Link>
-              <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/60">
-                L&apos;atelier qui conçoit vos sites et applis comme des pièces
-                d&apos;exposition. Direction artistique, design, développement.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.08 }}
-              className="md:col-span-4"
-            >
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cream/40">
-                Navigation
-              </div>
-              <ul className="mt-5 grid grid-cols-2 gap-y-3 text-sm">
-                {[
-                  ["Services", "#services"],
-                  ["Projets", "#projets"],
-                  ["Compétences", "#competences"],
-                  ["Méthode", "#methode"],
-                  ["Contact", "#contact"],
-                ].map(([l, h]) => (
-                  <li key={h}>
-                    <Link
-                      href={h}
-                      className="group inline-flex items-center gap-2 text-cream/75 transition-colors hover:text-cream"
-                    >
-                      <span className="relative">
-                        {l}
-                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-accent transition-all duration-500 group-hover:w-full" />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.16 }}
-              className="md:col-span-3 md:text-right"
-            >
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cream/40">
-                Réseaux
-              </div>
-              <ul className="mt-5 space-y-3 text-sm md:space-y-4">
-                <li>
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center gap-2 text-cream/80 transition-colors hover:text-accent-soft"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.69-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 015.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.42-2.69 5.38-5.25 5.67.41.35.78 1.05.78 2.12 0 1.53-.01 2.77-.01 3.14 0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z" />
-                    </svg>
-                    <span className="relative">
-                      GitHub
-                      <span className="absolute -bottom-0.5 left-0 h-px w-full bg-cream/20 transition-colors group-hover:bg-accent" />
-                    </span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group inline-flex items-center gap-2 text-cream/80 transition-colors hover:text-accent-soft"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-                    </svg>
-                    <span className="relative">
-                      LinkedIn
-                      <span className="absolute -bottom-0.5 left-0 h-px w-full bg-cream/20 transition-colors group-hover:bg-accent" />
-                    </span>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                      <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-cream/10 pt-6 text-xs text-cream/50 md:flex-row md:items-center">
-            <div className="font-mono tracking-wide">
-              Code & design : Badr Khazzani · © {new Date().getFullYear()} ·{" "}
-              <Link href="#top" className="text-cream/70 underline-offset-4 hover:text-cream hover:underline">
-                Mentions légales
-              </Link>
-            </div>
-            <div className="flex items-center gap-2 font-mono tracking-wide">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_rgba(91,181,232,0.9)]" />
               </span>
-              Disponible · Août 2026
-            </div>
+            </p>
           </div>
-        </footer>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono uppercase tracking-[0.28em]">
+            <a href="#" className="transition-colors hover:text-ivory/80">
+              Mentions légales
+            </a>
+            <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
+            <a href="#" className="transition-colors hover:text-ivory/80">
+              RGPD
+            </a>
+            <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
+            <span>Siret 000 000 000 00000</span>
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 }

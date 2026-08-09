@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className="bg-dark text-cream antialiased selection:bg-accent selection:text-dark">
+      <body className="bg-midnight text-ivory antialiased selection:bg-coral selection:text-midnight">
         <SmoothScrollProvider>
           <ScrollProgress />
           <CustomCursor />

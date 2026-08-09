@@ -56,21 +56,21 @@ export default function Navbar() {
         "fixed inset-x-0 top-0 z-[900] transition-colors duration-500",
         scrolled
           ? light
-            ? "backdrop-blur-xl bg-cream/80 border-b border-dark/10"
-            : "backdrop-blur-xl bg-dark-800/70 border-b border-cream/10"
+            ? "backdrop-blur-2xl bg-ivory/80 border-b border-midnight/10 shadow-[0_4px_30px_-8px_rgba(13,11,31,0.08)]"
+            : "backdrop-blur-2xl bg-midnight-800/60 border-b border-ivory/10 shadow-[0_4px_30px_-8px_rgba(0,0,0,0.4)]"
           : "bg-transparent"
       )}
     >
       <nav
         className={cn(
           "mx-auto flex h-20 max-w-[1500px] items-center justify-between px-6 lg:px-10",
-          light ? "text-dark" : "text-cream"
+          light ? "text-midnight" : "text-ivory"
         )}
       >
         <Link href="#top" className="group flex items-center gap-2.5">
           <LogoMark light={light} />
           <span className="font-display text-[1.05rem] font-semibold tracking-tight">
-            NoctalyStudio
+            Noctaly<span className="text-gradient-sunset">Studio</span>
           </span>
         </Link>
 
@@ -81,7 +81,7 @@ export default function Navbar() {
                 href={n.href}
                 className={cn(
                   "relative py-2 text-[0.82rem] font-medium uppercase tracking-[0.18em] transition-colors",
-                  "after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:origin-left after:bg-current after:transition-all after:duration-500",
+                  "after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:origin-left after:bg-gradient-to-r after:from-coral after:to-amber after:transition-all after:duration-500",
                   "hover:after:w-full"
                 )}
               >
@@ -96,24 +96,30 @@ export default function Navbar() {
           className={cn(
             "group relative hidden items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] transition-all duration-500 md:inline-flex",
             light
-              ? "bg-dark text-cream hover:bg-accent hover:text-dark"
-              : "bg-cream text-dark hover:bg-accent hover:text-dark"
+              ? "bg-midnight text-ivory hover:bg-coral shadow-[0_8px_25px_-8px_rgba(13,11,31,0.35)] hover:shadow-glow-coral"
+              : "bg-gradient-to-r from-coral to-amber text-midnight hover:from-coral-500 hover:to-amber-deep shadow-glow-coral hover:shadow-glow-amber"
           )}
         >
-          <span className="relative z-10">Réserver un appel</span>
-          <svg
-            className="relative z-10 h-3 w-3 transition-transform duration-500 group-hover:translate-x-1"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M5 12H19M19 12L12 5M19 12L12 19"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <span className="relative z-10 flex items-center gap-2">
+            Réserver un appel
+            <svg
+              className="relative z-10 h-3 w-3 transition-transform duration-500 group-hover:translate-x-1"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M5 12H19M19 12L12 5M19 12L12 19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </span>
+          <span
+            aria-hidden
+            className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
+          />
         </Link>
       </nav>
     </motion.header>
@@ -121,10 +127,17 @@ export default function Navbar() {
 }
 
 function LogoMark({ light }: { light: boolean }) {
-  const stroke = light ? "#0A0F1C" : "#F2EDE1";
-  const accent = light ? "#3A8AB5" : "#5BB5E8";
+  const stroke = light ? "#0D0B1F" : "#F5F0E6";
+  const accent1 = "#FF6B6B";
+  const accent2 = "#FFB547";
   return (
     <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor={accent1} />
+          <stop offset="100%" stopColor={accent2} />
+        </linearGradient>
+      </defs>
       <path
         d="M 22 7 A 13 13 0 1 0 22 33 A 10 10 0 1 1 22 7 Z"
         stroke={stroke}
@@ -142,7 +155,7 @@ function LogoMark({ light }: { light: boolean }) {
       />
       <path
         d="M 32 10 l -1 4 l 4 0.5 l -3.5 2 l 1 4 l -3 -2.2 l -3 2.2 l 1 -4 l -3.5 -2 l 4 -0.5 Z"
-        fill={accent}
+        fill="url(#logoGrad)"
       />
     </svg>
   );

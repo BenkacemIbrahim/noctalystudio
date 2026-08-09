@@ -55,20 +55,28 @@ export default function LoadingScreen({ onComplete }: Props) {
           filter: "blur(10px)",
           transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] },
         }}
-        className="fixed inset-0 z-[10000] flex items-center justify-center bg-dark-900"
+        className="fixed inset-0 z-[10000] flex items-center justify-center bg-midnight-950"
       >
+        <div aria-hidden className="absolute inset-0 mesh-gradient opacity-40 animate-aurora" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.08]">
+          <div className="absolute left-1/2 top-1/2 h-[1000px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-coral/40" />
+          <div className="absolute left-1/2 top-1/2 h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber/30" />
+          <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-teal/25" />
+        </div>
+
         <div className="relative">
           <svg
             width="340"
             height="340"
             viewBox="0 0 340 340"
-            className="drop-shadow-[0_0_40px_rgba(91,181,232,0.22)]"
+            className="drop-shadow-[0_0_60px_rgba(255,107,107,0.35)]"
           >
             <defs>
               <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#BCD4E6" />
-                <stop offset="50%" stopColor="#5BB5E8" />
-                <stop offset="100%" stopColor="#3A8AB5" />
+                <stop offset="0%" stopColor="#FF6B6B" />
+                <stop offset="35%" stopColor="#FFB547" />
+                <stop offset="70%" stopColor="#4ECDC4" />
+                <stop offset="100%" stopColor="#7B4B94" />
               </linearGradient>
             </defs>
             <circle
@@ -76,10 +84,9 @@ export default function LoadingScreen({ onComplete }: Props) {
               cy="170"
               r="150"
               fill="none"
-              stroke="rgba(242,237,225,0.06)"
+              stroke="rgba(245,240,230,0.06)"
               strokeWidth="10"
             />
-            {/* segmented marks */}
             {Array.from({ length: 24 }).map((_, i) => {
               const a = (i / 24) * Math.PI * 2 - Math.PI / 2;
               const r1 = 130;
@@ -95,7 +102,7 @@ export default function LoadingScreen({ onComplete }: Props) {
                   y1={y1}
                   x2={x2}
                   y2={y2}
-                  stroke="rgba(242,237,225,0.18)"
+                  stroke="rgba(245,240,230,0.20)"
                   strokeWidth={i % 6 === 0 ? 2 : 1}
                   strokeLinecap="round"
                 />
@@ -114,7 +121,6 @@ export default function LoadingScreen({ onComplete }: Props) {
               transform="rotate(-90 170 170)"
               style={{ transition: "stroke-dashoffset 80ms linear" }}
             />
-            {/* rotating hand */}
             <g
               style={{
                 transformOrigin: "170px 170px",
@@ -131,14 +137,14 @@ export default function LoadingScreen({ onComplete }: Props) {
                 strokeWidth="3"
                 strokeLinecap="round"
               />
-              <circle cx="170" cy="58" r="5" fill="#5BB5E8" />
+              <circle cx="170" cy="58" r="5" fill="#FF6B6B" className="drop-shadow-[0_0_10px_rgba(255,107,107,0.8)]" />
             </g>
-            <circle cx="170" cy="170" r="8" fill="#5BB5E8" />
+            <circle cx="170" cy="170" r="8" fill="#FF6B6B" />
           </svg>
 
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="font-mono text-6xl font-light tracking-wider text-cream">
+              <div className="font-mono text-6xl font-light tracking-wider text-ivory">
                 <span>
                   {String(Math.floor(progress / 100)).padStart(1, "0")}
                 </span>
@@ -147,7 +153,7 @@ export default function LoadingScreen({ onComplete }: Props) {
                 </span>
                 <span>{String(progress % 10).padStart(1, "0")}</span>
               </div>
-              <div className="mt-2 text-[10px] tracking-[0.4em] text-accent-soft/70">
+              <div className="mt-2 text-[10px] tracking-[0.4em] text-gradient-sunset">
                 CHARGEMENT · NOCTALY
               </div>
             </div>
