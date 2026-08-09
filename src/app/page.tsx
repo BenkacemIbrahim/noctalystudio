@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import LogoIntro from "@/components/LogoIntro";
 import SoundToggle from "@/components/SoundToggle";
@@ -18,6 +18,10 @@ type Phase = "logo" | "ready";
 export default function HomePage() {
   const [phase, setPhase] = useState<Phase>("logo");
 
+  const handleLogoComplete = useCallback(() => {
+    setPhase("ready");
+  }, []);
+
   useEffect(() => {
     if (phase === "logo") {
       document.body.style.overflow = "hidden";
@@ -32,7 +36,7 @@ export default function HomePage() {
   return (
     <main className="relative min-h-screen bg-midnight text-ivory">
       {phase === "logo" && (
-        <LogoIntro onComplete={() => setPhase("ready")} />
+        <LogoIntro onComplete={handleLogoComplete} />
       )}
 
       <div
