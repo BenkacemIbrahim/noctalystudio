@@ -101,7 +101,6 @@ npm run start
 ├── public/                  # Static assets served from the root
 ├── src/
 │   ├── app/
-│   │   ├── fonts/           # Local font files
 │   │   ├── globals.css      # Tailwind layers, design tokens, utilities
 │   │   ├── layout.tsx       # Root layout, metadata, providers
 │   │   └── page.tsx         # Landing page composition
