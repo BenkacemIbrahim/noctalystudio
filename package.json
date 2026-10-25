@@ -2,14 +2,39 @@
   "name": "noctalystudio",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio of Ibrahim Benkacem — full-stack engineer. Built with Next.js, TypeScript, Tailwind CSS, GSAP and Framer Motion.",
+  "author": "Ibrahim Benkacem <benkacemibrahim1@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/BenkacemIbrahim/noctalystudio#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenkacemIbrahim/noctalystudio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BenkacemIbrahim/noctalystudio/issues"
+  },
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "gsap",
+    "lenis"
+  ],
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.42",
     "clsx": "^2.1.1",
     "framer-motion": "^13.0.0",
     "gsap": "^3.15.0",
