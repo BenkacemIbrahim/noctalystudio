@@ -3,23 +3,22 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-type NavKey = "accueil" | "signature" | "services" | "projets" | "competences" | "methode" | "contact";
+type NavKey = "top" | "signature" | "services" | "projets" | "competences" | "methode" | "contact";
 interface Section { id: NavKey; label: string }
 const NAV: Section[] = [
-  { id: "accueil", label: "Accueil" },
-  { id: "signature", label: "Signature" },
-  { id: "services", label: "Services" },
-  { id: "projets", label: "Projets" },
-  { id: "competences", label: "Compétences" },
-  { id: "methode", label: "Méthode" },
+  { id: "top", label: "Home" },
+  { id: "signature", label: "About" },
+  { id: "services", label: "Expertise" },
+  { id: "projets", label: "Projects" },
+  { id: "competences", label: "Skills" },
+  { id: "methode", label: "Process" },
   { id: "contact", label: "Contact" },
 ];
 
 const SOCIAL = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/badrkhazzani/" },
-  { label: "Github", href: "https://github.com/badrek" },
-  { label: "Dribbble", href: "#" },
-  { label: "X / Twitter", href: "#" },
+  { label: "GitHub", href: "https://github.com/BenkacemIbrahim" },
+  { label: "Twitter / X", href: "https://twitter.com/Benkacem_" },
+  { label: "LinkedIn", href: "#" },
 ];
 
 function CornerBracketSVG() {
@@ -162,10 +161,10 @@ function ContactInfo() {
       <div>
         <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Contact</p>
         <a
-          href="mailto:hello@noctalystudio.com"
+          href="mailto:benkacemibrahim1@gmail.com"
           className="group relative inline-flex items-center gap-2 text-gradient-coral font-display text-lg tracking-tight"
         >
-          hello@noctalystudio.com
+          benkacemibrahim1@gmail.com
           <svg
             className="h-4 w-4 translate-y-0.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             viewBox="0 0 24 24"
@@ -181,7 +180,7 @@ function ContactInfo() {
         </a>
       </div>
       <div>
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Réseaux</p>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Social</p>
         <ul className="space-y-2">
           {SOCIAL.map((s) => (
             <li key={s.label}>
@@ -201,10 +200,10 @@ function ContactInfo() {
         </ul>
       </div>
       <div>
-        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Localisation</p>
+        <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">Location</p>
         <p className="text-ivory/65">
-          Paris &amp; remote — Toulouse.<br />
-          <span className="italic text-ivory/80">Et toute la France.</span>
+          Morocco &mdash; Open to Remote.<br />
+          <span className="italic text-ivory/80">Available worldwide.</span>
         </p>
       </div>
     </div>
@@ -236,10 +235,10 @@ function Clock() {
     const id = window.setInterval(() => setTime(new Date()), 1000 * 30);
     return () => window.clearInterval(id);
   }, []);
-  const paris = new Intl.DateTimeFormat("fr-FR", {
+  const morocco = new Intl.DateTimeFormat("en-US", {
     hour: "2-digit",
     minute: "2-digit",
-    timeZone: "Europe/Paris",
+    timeZone: "Africa/Casablanca",
   }).format(time);
   return (
     <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em] text-ivory/55">
@@ -247,7 +246,7 @@ function Clock() {
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal opacity-60" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-gradient-to-br from-teal to-mint shadow-glow-teal" />
       </span>
-      {paris} &middot; Paris
+      {morocco} &middot; Morocco
     </div>
   );
 }
@@ -283,7 +282,7 @@ export default function ContactFooter() {
         <div ref={titleRef} className="mb-20">
           <span className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-amber-soft">
             <span className="h-px w-10 bg-gradient-to-r from-coral/50 via-amber/50 to-transparent" />
-            — finalisons ça ensemble
+            — let&apos;s build something together
           </span>
           <div className="grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
             <div className="lg:col-span-8">
@@ -294,7 +293,7 @@ export default function ContactFooter() {
                   transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
                   className="inline-block"
                 >
-                  Parlons de votre
+                  Got a project
                 </motion.span>
                 <br />
                 <motion.span
@@ -303,7 +302,7 @@ export default function ContactFooter() {
                   transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                   className="inline-block"
                 >
-                  <span className="text-gradient-coral italic font-light">prochain</span> projet web
+                  <span className="text-gradient-coral italic font-light">in mind</span>? Let&apos;s talk
                 </motion.span>
                 <motion.span
                   initial={{ y: "110%", opacity: 0 }}
@@ -316,14 +315,13 @@ export default function ContactFooter() {
               </h2>
             </div>
             <p className="max-w-md text-lg leading-relaxed text-ivory/65 lg:col-span-4">
-              Un site, un redesign, un outil interne, une app mobile —<br />
-              <span className="italic text-ivory/90">je réponds à 48h</span> pour un premier échange, sans
-              attachement.
+              Web apps, APIs, dashboards, or a full-stack product &mdash;<br />
+              <span className="italic text-ivory/90">I reply within 24h</span> for a first discussion, no strings attached.
             </p>
           </div>
 
           <motion.a
-            href="#contact"
+            href="mailto:benkacemibrahim1@gmail.com"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -336,19 +334,19 @@ export default function ContactFooter() {
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div>
                     <p className="font-mono text-[11px] uppercase tracking-[0.32em] text-gradient-coral">
-                      &mdash; cta studio
+                      &mdash; drop me an email
                     </p>
                     <p className="mt-2 font-display text-2xl leading-tight md:text-3xl">
-                      Réserver un <em className="text-gradient-coral not-italic italic">appel</em> 30&nbsp;min
+                      Send me a <em className="text-gradient-coral not-italic italic">message</em>
                     </p>
                     <p className="mt-1 text-sm text-ivory/60">
-                      Découverte du projet, planning, devis sous 72h.
+                      Open to freelance, full-time, or collaboration.
                     </p>
                   </div>
                   <div className="relative mt-4 md:mt-0 md:shrink-0">
                     <span className="pointer-events-none absolute -inset-6 -z-10 rounded-full bg-gradient-to-r from-coral/40 via-amber/30 to-teal/30 blur-2xl opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-coral via-amber to-plum shadow-[0_20px_60px_-12px_rgba(255,107,107,0.7)] transition-transform duration-500 group-hover:scale-105">
-                      <span className="sr-only">Réserver</span>
+                      <span className="sr-only">Send email</span>
                       <svg
                         viewBox="0 0 24 24"
                         className="h-9 w-9 text-midnight transition-transform duration-500 group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
@@ -364,11 +362,11 @@ export default function ContactFooter() {
                 <div className="grid grid-cols-2 gap-3 pt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-ivory/45">
                   <div className="flex items-center gap-2">
                     <span className="h-1 w-1 rounded-full bg-coral" />
-                    <span>Prochain créneau : 30 min</span>
+                    <span>Morocco · Remote-friendly</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="h-1 w-1 rounded-full bg-amber" />
-                    <span>Google Meet</span>
+                    <span>20+ Public Repos</span>
                   </div>
                 </div>
               </div>
@@ -381,16 +379,15 @@ export default function ContactFooter() {
             <div className="flex items-center gap-3">
               <LogoMark className="h-10 w-10 text-gradient-coral" />
               <div>
-                <p className="font-display text-xl font-black tracking-tight">NoctalyStudio</p>
+                <p className="font-display text-xl font-black tracking-tight">Ibrahim Benkacem</p>
                 <p className="text-[11px] uppercase tracking-[0.28em] text-ivory/50">
-                  <span className="text-gradient-sunset">Badr Khazzani</span> · Studio créatif
+                  <span className="text-gradient-sunset">Full-Stack Engineer</span> · Morocco
                 </p>
               </div>
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-ivory/60">
-              Des sites web et applications{" "}
-              <em className="not-italic italic text-gradient-coral">faits main</em>, sur-mesure, sans template, pour
-              qu&apos;ils durent. Basé à Paris.
+              Building clean, efficient web applications with{" "}
+              <em className="not-italic italic text-gradient-coral">modern tech stacks</em>. Angular, Spring Boot, Next.js, TypeScript.
             </p>
             <div className="mt-6">
               <Clock />
@@ -408,11 +405,12 @@ export default function ContactFooter() {
 
         <div className="relative flex flex-col items-start justify-between gap-5 border-t border-ivory/10 pt-8 text-xs text-ivory/45 md:flex-row md:items-center">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <p>&copy; {new Date().getFullYear()} NoctalyStudio. Tous droits réservés.</p>
+            <p>&copy; {new Date().getFullYear()} Ibrahim Benkacem. All rights reserved.</p>
             <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
             <p className="italic">
-              Design &amp; code par <span className="text-gradient-coral not-italic italic">Badr Khazzani</span> —
-              merci pour la visite{" "}
+              Designed &amp; coded by{" "}
+              <span className="text-gradient-coral not-italic italic">Ibrahim Benkacem</span> —
+              thanks for visiting{" "}
               <span className="inline-flex items-center gap-1 align-middle text-gradient-coral">
                 <svg viewBox="0 0 24 24" className="inline h-3.5 w-3.5 translate-y-0.5" fill="none">
                   <path
@@ -426,15 +424,15 @@ export default function ContactFooter() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono uppercase tracking-[0.28em]">
-            <a href="#" className="transition-colors hover:text-ivory/80">
-              Mentions légales
+            <a href="https://github.com/BenkacemIbrahim" target="_blank" rel="noreferrer" className="transition-colors hover:text-ivory/80">
+              GitHub
             </a>
             <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
-            <a href="#" className="transition-colors hover:text-ivory/80">
-              RGPD
+            <a href="https://twitter.com/Benkacem_" target="_blank" rel="noreferrer" className="transition-colors hover:text-ivory/80">
+              Twitter
             </a>
             <span className="hidden h-1 w-1 rounded-full bg-ivory/30 md:inline-block" />
-            <span>Siret 000 000 000 00000</span>
+            <span>Available for work</span>
           </div>
         </div>
       </div>

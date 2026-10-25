@@ -10,39 +10,58 @@ gsap.registerPlugin(ScrollTrigger);
 const PROJECTS = [
   {
     index: "N°01",
-    title: "RelanceWork",
+    title: "Enterprise Workspace",
     subtitle:
-      "Un gestionnaire de candidatures qui relance vos prospects tout seul.",
+      "Production-ready Angular app combining authentication, analytics, Kanban tasks & project portfolio in one enterprise UI.",
     category: "FULL-STACK",
-    year: "2025",
+    year: "2026",
     accent: "coral",
+    href: "https://github.com/BenkacemIbrahim/Enterprise-Workspace",
+    tags: ["Angular", "TypeScript", "Spring Boot"],
   },
   {
     index: "N°02",
-    title: "Rasengan Chidori",
+    title: "Upworl",
     subtitle:
-      "Plateforme de quiz anime multijoueur en temps réel.",
-    category: "DESIGN SYSTEM",
-    year: "2024",
+      "Enterprise-grade freelance marketplace with JWT auth, RBAC, freelancer reputation systems, and Stripe payments.",
+    category: "PLATFORM",
+    year: "2026",
     accent: "amber",
+    href: "https://github.com/BenkacemIbrahim/upworl",
+    tags: ["Angular", "Spring Boot", "PostgreSQL", "Redis"],
   },
   {
     index: "N°03",
-    title: "Atlas Voyages",
+    title: "ClinicOps",
     subtitle:
-      "Moteur de réservation sur-mesure pour agence de tours.",
-    category: "E-COMMERCE",
-    year: "2024",
+      "Multilingual clinic operations platform with patient lifecycle management, appointment scheduling, payment tracking, and analytics dashboards.",
+    category: "FULL-STACK",
+    year: "2025",
     accent: "teal",
+    href: "https://github.com/BenkacemIbrahim/ClinicOps",
+    tags: ["Laravel", "Next.js", "TypeScript", "MySQL"],
   },
   {
     index: "N°04",
-    title: "Lumen Portfolio",
+    title: "QUORRA — NotebookLM Clone",
     subtitle:
-      "Site portfolio avec scroll 3D pour photographe.",
-    category: "WEB DESIGN",
+      "AI-powered research partner built with Next.js & Gemini. Intelligent insights with a clean, accessible high-performance UI.",
+    category: "AI APP",
     year: "2025",
     accent: "plum",
+    href: "https://github.com/BenkacemIbrahim/notebooklm-clone",
+    tags: ["Next.js", "React", "TypeScript", "Gemini"],
+  },
+  {
+    index: "N°05",
+    title: "Job Tracker API",
+    subtitle:
+      "Production-ready Spring Boot backend for job application tracking with JWT auth, RBAC, analytics & PostgreSQL Flyway migrations.",
+    category: "BACKEND",
+    year: "2026",
+    accent: "coral",
+    href: "https://github.com/BenkacemIbrahim/job-application-tracker-api",
+    tags: ["Spring Boot", "Java", "PostgreSQL", "Swagger"],
   },
 ];
 
@@ -117,20 +136,22 @@ export default function Projects() {
             <div className="flex items-center gap-3">
               <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-coral to-amber shadow-glow-coral" />
               <span className="text-[0.72rem] font-semibold uppercase tracking-widest2 text-gradient-coral">
-                — la collection
+                — selected projects
               </span>
             </div>
             <h2 className="font-display text-[clamp(3rem,11vw,10rem)] font-black leading-[0.92] tracking-[-0.03em]">
-              Pièces <span className="text-gradient-sunset italic font-light">choisies</span>
+              Featured <span className="text-gradient-sunset italic font-light">Work</span>
             </h2>
           </div>
 
           <a
-            href="#projets"
+            href="https://github.com/BenkacemIbrahim"
+            target="_blank"
+            rel="noreferrer"
             className="group inline-flex items-center gap-2 self-start text-[0.8rem] font-semibold uppercase tracking-widest2 text-midnight transition-colors md:self-end"
           >
             <span className="relative">
-              Visiter la galerie
+              View all on GitHub
               <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-coral to-amber transition-all duration-500 group-hover:w-full" />
             </span>
             <svg
@@ -160,7 +181,9 @@ export default function Projects() {
               }}
             >
               <a
-                href="#"
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
                 className={cn(
                   "group relative grid grid-cols-12 items-end gap-4 py-10 transition-all duration-500 md:gap-8 md:py-14 lg:py-16 overflow-hidden"
                 )}
@@ -186,6 +209,13 @@ export default function Projects() {
                   <p className="max-w-xl text-[1rem] leading-relaxed text-midnight/65 md:text-[1.05rem]">
                     {p.subtitle}
                   </p>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    {p.tags.map((tag) => (
+                      <span key={tag} className="inline-flex items-center rounded-full border border-midnight/15 bg-gradient-to-r from-ivory/80 to-ivory px-2.5 py-0.5 font-mono text-[0.62rem] font-semibold uppercase tracking-widest2 text-midnight/65">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="col-span-6 mt-4 flex items-center justify-start md:col-span-2 md:mt-0 md:justify-center relative z-10">

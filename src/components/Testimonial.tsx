@@ -17,7 +17,7 @@ export default function Testimonial() {
         <div className="mb-16 flex items-center gap-3 md:mb-24">
           <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-coral to-amber shadow-glow-amber" />
           <span className="text-[0.72rem] font-semibold uppercase tracking-widest2 text-midnight/70">
-            Témoignage client
+            Open Source Highlight
           </span>
         </div>
 
@@ -40,15 +40,16 @@ export default function Testimonial() {
 
               <p className="font-display text-[clamp(1.8rem,4.4vw,4.6rem)] font-light italic leading-[1.18] tracking-[-0.015em] text-balance">
                 <span className="not-italic">&laquo;&nbsp;</span>
-                Badr fait preuve d&rsquo;une{" "}
+                Cyberpunk-inspired portfolio featuring{" "}
                 <span className="not-italic font-semibold text-gradient-coral">
-                  bonne direction artistique
+                  immersive 3D visuals
                 </span>{" "}
-                [...] il a démontré sa capacité à apporter une{" "}
+                and{" "}
                 <span className="not-italic font-semibold text-gradient-ocean">
-                  vision artistique pertinente et innovante
+                  advanced animations
                 </span>
-                .<span className="not-italic">&nbsp;»</span>
+                , optimized for speed, SEO, and accessibility.
+                <span className="not-italic">&nbsp;»</span>
               </p>
             </motion.blockquote>
           </div>
@@ -90,7 +91,7 @@ export default function Testimonial() {
                     <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
                   </svg>
                   <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-widest2 text-midnight/70">
-                    Lettre de recommandation
+                    Featured Repository
                   </span>
                 </div>
 
@@ -98,28 +99,46 @@ export default function Testimonial() {
                   <div className="flex items-center gap-5">
                     <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-full border-2 border-midnight/10 bg-gradient-to-br from-coral-200 via-amber-soft to-teal-soft">
                       <div className="absolute inset-0 flex items-center justify-center font-display text-[1.6rem] font-black text-midnight/80">
-                        JR
+                        IB
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-1.5">
                       <p className="font-display text-[1.45rem] font-semibold leading-none tracking-tight">
-                        Jérémie Renault
+                        ibrahim-portfolio
                       </p>
                       <p className="font-mono text-[0.72rem] font-semibold uppercase tracking-widest2 text-midnight/60">
-                        Chief Marketing Officer · Notify
+                        HTML · CSS · Three.js · TypeScript
                       </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 font-mono text-[0.7rem] text-midnight/55">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="h-3.5 w-3.5 text-amber-deep" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                      <span>1 star</span>
+                    </div>
+                    <span className="h-1 w-1 rounded-full bg-midnight/20" />
+                    <div className="flex items-center gap-1.5">
+                      <svg className="h-3.5 w-3.5 text-teal-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M7 7H17M7 12H17M7 17H12" strokeLinecap="round" />
+                      </svg>
+                      <span>MIT License</span>
                     </div>
                   </div>
 
                   <div className="hairline opacity-60" />
 
                   <a
-                    href="#"
+                    href="https://github.com/BenkacemIbrahim/ibrahim-portfolio"
+                    target="_blank"
+                    rel="noreferrer"
                     className="group/link inline-flex items-center gap-2.5 pt-1 text-[0.82rem] font-semibold uppercase tracking-widest2 text-midnight transition-all duration-500"
                   >
                     <span className="relative">
-                      Lire la lettre complète
+                      View on GitHub
                       <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-coral to-amber transition-all duration-500 group-hover/link:w-full" />
                     </span>
                     <svg

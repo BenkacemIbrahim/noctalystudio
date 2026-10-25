@@ -178,7 +178,7 @@ export default function LogoIntro({ onComplete }: Props) {
             transition={{ duration: 0.7, delay: 1.0 }}
             className="mt-6 text-center text-[11px] tracking-[0.5em] text-[#2A1F0F]/70"
           >
-            NOCTALYSTUDIO
+            IBRAHIM BENKACEM
           </motion.div>
 
           <motion.div
@@ -187,7 +187,7 @@ export default function LogoIntro({ onComplete }: Props) {
             transition={{ duration: 0.6, delay: 1.5 }}
             className="mt-8 text-center text-[10px] tracking-[0.32em] text-[#2A1F0F]/45"
           >
-            Cliquez ou appuyez sur Entrée pour continuer
+            Click or press Enter to continue
           </motion.div>
         </motion.div>
       </motion.div>

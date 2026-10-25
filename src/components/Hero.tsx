@@ -96,7 +96,7 @@ export default function Hero() {
         >
           <h1 className="font-display leading-[0.92] tracking-tight">
             <span className="block text-[clamp(3rem,8vw,7.5rem)] font-black text-ivory">
-              Des sites
+              Full-Stack
             </span>
             <span
               className={cn(
@@ -104,7 +104,7 @@ export default function Hero() {
                 "text-gradient-sunset"
               )}
             >
-              comme des œuvres
+              Engineer
             </span>
           </h1>
         </motion.div>
@@ -133,13 +133,16 @@ export default function Hero() {
                     <div className="mb-6 flex w-full max-w-xl items-center gap-3 text-ivory/60">
                       <span className="h-px flex-1 bg-ivory/15" />
                       <span className="font-mono text-[10px] uppercase tracking-[0.32em] text-gradient-coral">
-                        Exposition Permanente
+                        Morocco — Open to Remote
                       </span>
                       <span className="h-px flex-1 bg-ivory/15" />
                     </div>
                     <h2 className="bg-gradient-to-b from-ivory via-[#FFD79C] to-[#FF9999] bg-clip-text font-display text-[clamp(2.2rem,7vw,5.5rem)] font-black tracking-tight text-transparent drop-shadow-[0_8px_30px_rgba(255,107,107,0.35)]">
-                      NoctalyStudio
+                      Ibrahim Benkacem
                     </h2>
+                    <p className="mt-4 font-mono text-[clamp(0.65rem,1.5vw,0.85rem)] text-ivory/60 tracking-[0.15em] uppercase">
+                      Building clean, efficient web applications
+                    </p>
                     <div className="mt-6 h-16 w-px bg-gradient-to-b from-coral/60 via-amber/50 to-transparent" />
                   </div>
                 </div>
@@ -164,7 +167,7 @@ export default function Hero() {
                 aria-hidden
                 className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
               />
-              <span className="relative z-10">Entrer dans l&rsquo;exposition</span>
+              <span className="relative z-10">Explore my work</span>
               <svg
                 width="16"
                 height="16"
@@ -193,10 +196,10 @@ export default function Hero() {
         >
           <h1 className="font-display leading-[0.92] tracking-tight">
             <span className="block text-[clamp(3rem,8vw,7.5rem)] font-black text-ivory">
-              exposés
+              crafting
             </span>
             <span className="mt-2 block font-serif-italic text-[clamp(2.8rem,7.6vw,7.2rem)] font-light text-gradient-ocean">
-              avec soin
+              with care
             </span>
           </h1>
           <motion.div
@@ -206,10 +209,10 @@ export default function Hero() {
             className="mt-8 inline-flex flex-col items-end text-right"
           >
             <div className="font-mono text-[10px] uppercase tracking-[0.35em] text-ivory/50">
-              Faites défiler
+              Scroll to explore
             </div>
             <div className="mt-2 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-ivory/70">
-              <span>La visite commence</span>
+              <span>The journey starts</span>
               <span className="flex h-8 w-5 items-start justify-center rounded-full border border-ivory/25 pt-1">
                 <motion.span
                   animate={{ y: [0, 10, 0] }}
@@ -230,20 +233,20 @@ export default function Hero() {
           <div className="group relative max-w-md overflow-hidden rounded-2xl glass p-6 transition-all duration-500 hover:border-coral/40 hover:bg-coral/[0.06] hover:shadow-[0_25px_70px_-20px_rgba(255,107,107,0.35)]">
             <div className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full bg-coral/20 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             <div className="mb-4 font-mono text-[10px] uppercase tracking-[0.32em] text-gradient-coral">
-              Collection Permanente
+              Currently Available
             </div>
             <h3 className="font-display text-2xl font-semibold text-ivory">
-              L&rsquo;atelier, la nuit
+              Open to Opportunities
             </h3>
             <div className="mt-2 flex items-center gap-3 text-xs text-ivory/50">
-              <span className="font-mono">Vidéo pilotée au scroll</span>
+              <span className="font-mono">Full-Stack · Backend · Frontend</span>
               <span className="h-1 w-1 rounded-full bg-ivory/20" />
-              <span className="font-mono">2026</span>
+              <span className="font-mono">Morocco / Remote</span>
             </div>
             <div className="mt-4 h-px bg-gradient-to-r from-coral/60 via-amber/40 to-transparent" />
             <p className="mt-4 text-sm leading-relaxed text-ivory/70">
-              Sites et applications conçus comme pièces d&rsquo;exposition :
-              pensés, cadrés, éclairés.
+              Passionate about building clean, efficient web applications with
+              modern tech. From Angular & Spring Boot to Next.js & TypeScript.
             </p>
           </div>
         </motion.div>

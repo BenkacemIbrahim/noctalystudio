@@ -5,9 +5,9 @@ import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
-  title: "NoctalyStudio — sites, apps web & mobiles",
+  title: "Ibrahim Benkacem — Full-Stack Engineer",
   description:
-    "Des sites comme des œuvres, exposés avec soin. Sites vitrines premium, applis web & mobiles, refontes et lancements par Badr Khazzani.",
+    "Full-Stack Engineer from Morocco, passionate about building clean, efficient web applications. Angular, Spring Boot, Next.js, TypeScript, PostgreSQL.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-midnight text-ivory antialiased selection:bg-coral selection:text-midnight">
         <SmoothScrollProvider>
           <ScrollProgress />

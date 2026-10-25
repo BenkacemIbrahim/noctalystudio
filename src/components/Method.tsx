@@ -11,38 +11,38 @@ gsap.registerPlugin(ScrollTrigger);
 const STEPS = [
   {
     id: 1,
-    label: "Analyse",
-    tag: "ANALYSE",
-    title: "Comprendre avant de coder",
-    text: "Avant la première ligne de code, je pose les bonnes questions : objectifs, audience, parcours, messages. Récupérez les heures que ça vous prenait.",
+    label: "Discovery",
+    tag: "DISCOVERY",
+    title: "Understand before building",
+    text: "Before writing a single line of code, I ask the right questions: objectives, users, flows, technical constraints. This saves hours of rework later.",
   },
   {
     id: 2,
-    label: "Webdesign",
-    tag: "WEBDESIGN",
-    title: "Une interface qui donne envie de rester",
-    text: "Chaque écran passe par Figma avant le code — typographie, espacements, hiérarchie, tout est décidé à l'atelier avant d'être décidé au clavier.",
+    label: "Design",
+    tag: "UI/UX DESIGN",
+    title: "Interfaces that feel right",
+    text: "Every screen is designed in Figma first — typography, spacing, hierarchy, all decided in the design phase before touching the keyboard.",
   },
   {
     id: 3,
-    label: "Développement",
-    tag: "DÉVELOPPEMENT",
-    title: "Code propre, optimisé, maintenable",
-    text: "Next.js, React, TypeScript, tests et conventions. Chaque composant est pensé pour durer, être repris, et grossir sans dette.",
+    label: "Development",
+    tag: "DEVELOPMENT",
+    title: "Clean, optimized, maintainable code",
+    text: "Angular, Spring Boot, TypeScript, tests and conventions. Every component is built to last, easy to extend, and free from technical debt.",
   },
   {
     id: 4,
-    label: "Intégration",
-    tag: "INTÉGRATION & DONNÉES",
-    title: "Connecter les pièces à l'atelier",
-    text: "Bases de données, Make, Python, Git, connecteurs API. Tout ce qui rend le site autonome — formulaires, CMS, tableaux de bord, temps réel.",
+    label: "Integration",
+    tag: "INTEGRATION & DATA",
+    title: "Connecting all the pieces",
+    text: "Databases, JWT auth, Docker, Redis, REST APIs, WebSockets. Everything that makes an app truly autonomous and production-ready.",
   },
   {
     id: 5,
-    label: "Lancement",
-    tag: "LANCEMENT",
-    title: "Mise en ligne et suivi",
-    text: "Hébergement premium, SEO technique, analytics, mises à jour. Le lancement n'est pas la ligne d'arrivée : c'est le début de la visite.",
+    label: "Deployment",
+    tag: "DEPLOYMENT",
+    title: "Ship and maintain",
+    text: "Nginx, Docker, CI/CD pipelines, monitoring. The launch isn't the finish line — it's the beginning of a reliable, evolving product.",
   },
 ];
 
@@ -168,14 +168,14 @@ export default function Method() {
       <div className="relative mx-auto max-w-[1500px]">
         <div className="method-label mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] text-amber-soft">
           <span className="h-px w-10 bg-gradient-to-r from-coral/50 via-amber/50 to-transparent" />
-          — ma méthode
+          — my process
         </div>
 
         <h2 className="method-title max-w-4xl font-display text-[clamp(2.4rem,6vw,5.4rem)] font-black leading-[0.95] text-ivory">
-          Du brief <span className="text-gradient-coral italic font-light">au</span> lancement
+          From idea <span className="text-gradient-coral italic font-light">to</span> production
         </h2>
         <p className="method-sub mt-5 max-w-2xl text-lg leading-relaxed text-ivory/70">
-          De la première question au jour où le site tourne sans moi.
+          From the first question to the day the product runs on its own.
         </p>
 
         <div className="mt-20 grid grid-cols-12 items-start gap-8">
@@ -371,7 +371,7 @@ export default function Method() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-coral opacity-70" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-r from-coral to-amber shadow-glow-coral" />
               </span>
-              Cliquez une sphère
+              Click a sphere
             </div>
           </div>
 

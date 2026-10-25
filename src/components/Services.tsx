@@ -27,141 +27,141 @@ const ROOMS: Room[] = [
   {
     id: "01",
     index: "01",
-    salleLabel: "SALLE 01",
-    title: "SITE VITRINE PREMIUM",
-    shortLabel: "VITRINE",
+    salleLabel: "DOMAIN 01",
+    title: "FULL-STACK WEB APPS",
+    shortLabel: "WEB APPS",
     description:
-      "Une porte d'entrée soignée, à l'image de votre maison. Design cinématique, micro-interactions et typographie d'exception pour convertir vos visiteurs en ambassadeurs.",
+      "End-to-end web applications built with Angular, Next.js, Spring Boot and PostgreSQL. Clean architecture, composable design systems, and production-grade APIs — from MVP to enterprise scale.",
     bgClass: "bg-gradient-to-br from-[#FFF5EC] via-[#FFE8D6] to-[#FED4B0]",
     textClass: "text-midnight",
     subTextClass: "text-midnight/65",
     watermarkClass: "text-midnight/10",
     accent: "text-coral",
     medium: [
-      "Direction artistique & identité",
-      "3 maquettes clé en main",
-      "Pages service / projet / blog",
-      "Optimisation SEO Core Web Vitals",
+      "Angular SPA & Next.js applications",
+      "Spring Boot REST & WebSocket APIs",
+      "PostgreSQL & Redis data layers",
+      "JWT auth & RBAC security",
     ],
     livraison: [
-      "Livrable en 3 à 4 semaines",
-      "3 rounds de retours inclus",
-      "Formation de prise en main",
-      "30 jours de support post-lancement",
+      "CI/CD pipelines with Docker",
+      "Nginx reverse proxy setup",
+      "Automated test suites",
+      "Swagger/OpenAPI documentation",
     ],
   },
   {
     id: "02",
     index: "02",
-    salleLabel: "SALLE 02",
-    title: "APPLI WEB",
-    shortLabel: "APPLI WEB",
+    salleLabel: "DOMAIN 02",
+    title: "ENTERPRISE PLATFORMS",
+    shortLabel: "ENTERPRISE",
     description:
-      "Des plateformes sur-mesure, conçues comme des ateliers. Dashboards, CRM, outils internes ou SaaS : architecture propre, composants réutilisables et performance tenace.",
+      "Complex business platforms with authentication, analytics, role-based access, dashboards and Kanban systems. Designed like Linear. Reliable like a bank.",
     bgClass: "paper-texture",
     textClass: "text-midnight",
     subTextClass: "text-midnight/65",
     watermarkClass: "text-midnight/08",
     accent: "text-amber-deep",
     medium: [
-      "Audit & atelier de cadrage",
-      "Design system composable",
-      "Next.js / React / Node",
-      "Base de données & API REST/GraphQL",
+      "Multi-role authentication systems",
+      "Analytics & reporting dashboards",
+      "Kanban & workflow management",
+      "Real-time features with WebSockets",
     ],
     livraison: [
-      "Sprints bi-hebdomadaires",
-      "Environnements de staging",
-      "Tests unitaires & end-to-end",
-      "Documentation interne & CI/CD",
+      "Domain-driven design (DDD)",
+      "Clean architecture layers",
+      "Containerized deployment",
+      "Performance optimization & caching",
     ],
   },
   {
     id: "03",
     index: "03",
-    salleLabel: "SALLE 03",
-    title: "APPLICATION MOBILE",
-    shortLabel: "MOBILE",
+    salleLabel: "DOMAIN 03",
+    title: "API & BACKEND SYSTEMS",
+    shortLabel: "BACKEND",
     description:
-      "Une expérience qui tient dans la poche. iOS & Android avec une seule base de code, animations fluides et sensation native, jusqu'aux stores.",
+      "Production-ready Java/Spring Boot backends with Flyway migrations, OpenAPI documentation, and thorough automated test coverage. APIs built to last.",
     bgClass: "bg-gradient-to-br from-[#E8FAF8] via-[#D1F4F0] to-[#A3E6E1]",
     textClass: "text-midnight",
     subTextClass: "text-midnight/65",
     watermarkClass: "text-midnight/09",
     accent: "text-teal-deep",
     medium: [
-      "Atelier UX & user flows",
-      "Prototype interactif Figma",
-      "React Native / Expo",
-      "Push notifications & offline",
+      "Spring Boot microservices",
+      "PostgreSQL & Flyway migrations",
+      "Stripe payment integration",
+      "MinIO object storage",
     ],
     livraison: [
-      "Build iOS App Store",
-      "Build Android Play Store",
-      "Certificats & pipeline de release",
-      "Hotfix et itérations post-lancement",
+      "Unit & integration tests",
+      "Swagger UI documentation",
+      "Docker & Docker Compose",
+      "Security audit & hardening",
     ],
   },
   {
     id: "04",
     index: "04",
-    salleLabel: "SALLE 04",
-    title: "REFONTE EXISTANTE",
-    shortLabel: "REFONTE",
+    salleLabel: "DOMAIN 04",
+    title: "AI-POWERED APPLICATIONS",
+    shortLabel: "AI APPS",
     description:
-      "Redonner un second souffle sans jeter l'histoire. Nous reprenons l'existant, modernisons la pile, améliorons la performance et retravaillons l'expérience sans perdre vos données.",
+      "Modern AI-integrated products leveraging Gemini, Next.js and TypeScript. From intelligent research assistants to interactive frontends powered by cutting-edge models.",
     bgClass: "bg-gradient-to-br from-[#1A1430] via-[#0D0B1F] to-[#080612]",
     textClass: "text-ivory",
     subTextClass: "text-ivory/65",
     watermarkClass: "text-ivory/08",
     accent: "text-plum-soft",
     medium: [
-      "Audit complet de l'existant",
-      "Migration technique progressive",
-      "Reprise du design system",
-      "Optimisation vitesse & SEO",
+      "Gemini API integration",
+      "Next.js & React frontends",
+      "Accessible, responsive UI",
+      "SEO & Core Web Vitals optimization",
     ],
     livraison: [
-      "Plan de migration sans downtime",
-      "Synchronisation de données",
-      "Tests de non-régression",
-      "Bascul en douceur par feature flags",
+      "Vercel / Netlify deployment",
+      "shadcn/ui component systems",
+      "Tailwind CSS design tokens",
+      "Full TypeScript type safety",
     ],
   },
   {
     id: "05",
     index: "05",
-    salleLabel: "SALLE 05",
-    title: "MISE EN LIGNE & OPTIMISATION",
-    shortLabel: "LANCEMENT",
+    salleLabel: "DOMAIN 05",
+    title: "SECURITY & DEVOPS",
+    shortLabel: "DEVOPS",
     description:
-      "L'ultime coup de pinceau avant le vernissage. Hébergement, nom de domaine, SEO fin, analytics et monitoring : votre œuvre est prête à accueillir le monde.",
+      "Infrastructure, security and continuous delivery. JWT + refresh token rotation, RBAC policies, Docker containerization, Nginx config, and robust CI/CD pipelines.",
     bgClass: "bg-gradient-to-br from-[#FDE8E8] via-[#FFE0D0] to-[#FFD4B0]",
     textClass: "text-midnight",
     subTextClass: "text-midnight/65",
     watermarkClass: "text-midnight/09",
     accent: "text-coral-500",
     medium: [
-      "Configuration hébergement & domaine",
-      "SSL, CDN et cache global",
-      "On-page SEO & schema.org",
-      "Analytics, heatmaps et monitoring",
+      "JWT + refresh token rotation",
+      "Role-based access control (RBAC)",
+      "Docker & Nginx configuration",
+      "Redis caching & session management",
     ],
     livraison: [
-      "Mise en ligne supervisée",
-      "Checklist de 120 points",
-      "Rapport de performance",
-      "Support 15 jours après lancement",
+      "GitHub Actions CI/CD",
+      "Automated security scans",
+      "Performance monitoring",
+      "Zero-downtime deployments",
     ],
   },
 ];
 
 const STEP_LABELS = [
-  "VITRINE",
-  "APPLI WEB",
-  "MOBILE",
-  "REFONTE",
-  "LANCEMENT",
+  "WEB APPS",
+  "ENTERPRISE",
+  "BACKEND",
+  "AI APPS",
+  "DEVOPS",
 ];
 
 export default function Services() {
@@ -260,8 +260,8 @@ export default function Services() {
             >
               <div aria-hidden className={cn(
                 "pointer-events-none absolute inset-0 opacity-40",
-                room.id === "04" 
-                  ? "mesh-gradient" 
+                room.id === "04"
+                  ? "mesh-gradient"
                   : ""
               )} />
 
@@ -330,7 +330,7 @@ export default function Services() {
                             room.subTextClass
                           )}
                         >
-                          Médium
+                          Stack
                         </span>
                         <ul className="flex flex-col gap-3">
                           {room.medium.map((item, k) => (
@@ -359,7 +359,7 @@ export default function Services() {
                             room.subTextClass
                           )}
                         >
-                          Livraison
+                          Deliverables
                         </span>
                         <ul className="flex flex-col gap-3">
                           {room.livraison.map((item, k) => (
@@ -392,12 +392,12 @@ export default function Services() {
                     )}
                     style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.5rem)" }}
                   >
-                    NoctalyStudio · Pièce {room.index}
+                    Ibrahim Benkacem · Domain {room.index}
                   </span>
                   <div className="hidden items-center gap-2 md:flex">
                     <button
                       onClick={prev}
-                      aria-label="Salle précédente"
+                      aria-label="Previous domain"
                       disabled={activeIndex === 0}
                       className={cn(
                         "group flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 disabled:opacity-30",
@@ -418,7 +418,7 @@ export default function Services() {
                     </button>
                     <button
                       onClick={next}
-                      aria-label="Salle suivante"
+                      aria-label="Next domain"
                       disabled={activeIndex === ROOMS.length - 1}
                       className={cn(
                         "group flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 disabled:opacity-30",
@@ -455,7 +455,7 @@ export default function Services() {
           <div className="pointer-events-auto mx-auto flex w-full max-w-[1500px] items-center justify-between gap-4">
             <button
               onClick={prev}
-              aria-label="Salle précédente"
+              aria-label="Previous domain"
               disabled={activeIndex === 0}
               className="group flex h-11 w-11 items-center justify-center rounded-full border border-midnight/20 bg-ivory/80 backdrop-blur text-midnight transition-all duration-500 hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent disabled:opacity-30 md:hidden"
             >
@@ -520,7 +520,7 @@ export default function Services() {
 
             <button
               onClick={next}
-              aria-label="Salle suivante"
+              aria-label="Next domain"
               disabled={activeIndex === ROOMS.length - 1}
               className="group flex h-11 w-11 items-center justify-center rounded-full border border-midnight/20 bg-ivory/80 backdrop-blur text-midnight transition-all duration-500 hover:bg-gradient-to-r hover:from-coral hover:to-amber hover:text-midnight hover:border-transparent disabled:opacity-30 md:hidden"
             >

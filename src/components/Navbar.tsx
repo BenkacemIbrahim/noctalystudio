@@ -6,10 +6,10 @@ import { motion, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { label: "Services", href: "#services" },
-  { label: "Projets", href: "#projets" },
-  { label: "Compétences", href: "#competences" },
-  { label: "Méthode", href: "#methode" },
+  { label: "About", href: "#signature" },
+  { label: "Projects", href: "#projets" },
+  { label: "Skills", href: "#competences" },
+  { label: "Process", href: "#methode" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -70,7 +70,7 @@ export default function Navbar() {
         <Link href="#top" className="group flex items-center gap-2.5">
           <LogoMark light={light} />
           <span className="font-display text-[1.05rem] font-semibold tracking-tight">
-            Noctaly<span className="text-gradient-sunset">Studio</span>
+            Ibrahim<span className="text-gradient-sunset">.dev</span>
           </span>
         </Link>
 
@@ -91,8 +91,8 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <Link
-          href="#contact"
+        <a
+          href="mailto:benkacemibrahim1@gmail.com"
           className={cn(
             "group relative hidden items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-[0.78rem] font-semibold uppercase tracking-[0.18em] transition-all duration-500 md:inline-flex",
             light
@@ -101,7 +101,7 @@ export default function Navbar() {
           )}
         >
           <span className="relative z-10 flex items-center gap-2">
-            Réserver un appel
+            Hire Me
             <svg
               className="relative z-10 h-3 w-3 transition-transform duration-500 group-hover:translate-x-1"
               viewBox="0 0 24 24"
@@ -120,7 +120,7 @@ export default function Navbar() {
             aria-hidden
             className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover:translate-x-full"
           />
-        </Link>
+        </a>
       </nav>
     </motion.header>
   );
