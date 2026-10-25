@@ -25,6 +25,26 @@ a hand-built design system.
 The site is a Next.js App Router application rendered as a single landing page,
 composed of independent, self-contained sections.
 
+## Screenshots
+
+### Hero
+![Hero section](public/screenshot_hero.png)
+
+### About
+![About section](public/screenshot_about.png)
+
+### Services
+![Services section](public/screenshot_services.png)
+
+### Projects
+![Projects section](public/screenshot_projects.png)
+
+### Skills
+![Skills section](public/screenshot_skills.png)
+
+### Contact
+![Contact section](public/screenshot_contact.png)
+
 ## Features
 
 - **Immersive hero** with parallax depth on scroll and a sparkle layer.
